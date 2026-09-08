@@ -29,7 +29,7 @@ export function NarrativeEngine() {
   return pinned ? <PinnedEngine /> : <TouchEngine />;
 }
 
-function Header() {
+function Header({ hint }: { hint: string }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-6">
       <div>
@@ -37,7 +37,7 @@ function Header() {
         <h2 className="mt-4 max-w-[16ch] text-section">Explore the thinking behind the work.</h2>
       </div>
       <p className="max-w-sm text-sm leading-relaxed text-background/60">
-        Five forces shape every piece. Keep scrolling — the section holds while you move through them.
+        {hint}
       </p>
     </div>
   );
@@ -86,7 +86,7 @@ function PinnedEngine() {
     >
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
         <div className="container-editorial">
-          <Header />
+          <Header hint="Five forces shape every piece. Keep scrolling — the section holds while you move through them." />
 
           <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_minmax(0,24rem)]">
             {/* Stage */}
@@ -178,7 +178,7 @@ function TouchEngine() {
       className="hairline-t hairline-b bg-ink text-background"
     >
       <div className="container-editorial section-pad">
-        <Header />
+        <Header hint="Five forces shape every piece. Swipe through them at your own pace." />
         <div
           className="mt-10 -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 [scrollbar-width:none] md:mx-0 md:px-0"
           style={{ WebkitOverflowScrolling: "touch" }}
