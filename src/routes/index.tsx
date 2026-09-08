@@ -5,7 +5,9 @@ import { impact, photos, site, youtube } from "@/data/site";
 import { projects } from "@/data/work";
 import { articles } from "@/data/blog";
 import { services } from "@/data/services";
-import { Reveal, ImageReveal } from "@/components/motion/Reveal";
+import { Reveal, ImageReveal, useInView } from "@/components/motion/Reveal";
+import { CurtainImage, ScrollRule } from "@/components/motion/Curtain";
+import { MaskText } from "@/components/motion/MaskText";
 import { NarrativeEngine } from "@/components/sections/NarrativeEngine";
 import { ButtonLink, CtaBand, ProjectCard, SectionHead } from "@/components/sections/Common";
 
@@ -28,6 +30,29 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+/** Airy geometric depth accent — reacts softly to pointer / device tilt. */
+function DepthAccent({ x, y }: { x: number; y: number }) {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div
+        className="float-ring absolute -right-24 top-10 size-[34rem] rounded-full border border-azure/25 opacity-70"
+        style={{
+          transform: `translate3d(${x * 18}px, ${y * 18}px, 0)`,
+          background: "radial-gradient(closest-side, color-mix(in oklab, var(--azure) 9%, transparent), transparent 72%)",
+          transition: "transform 900ms cubic-bezier(0.16,1,0.3,1)",
+        }}
+      />
+      <div
+        className="absolute -left-32 bottom-0 size-[26rem] rounded-full border border-hairline opacity-60"
+        style={{
+          transform: `translate3d(${x * -26}px, ${y * -26}px, 0)`,
+          transition: "transform 1100ms cubic-bezier(0.16,1,0.3,1)",
+        }}
+      />
+    </div>
+  );
+}
+
 function Hero() {
   const [offset, setOffset] = useState(0);
   const [pointer, setPointer] = useState({ x: 0, y: 0 });
@@ -36,36 +61,45 @@ function Hero() {
     const onScroll = () => setOffset(window.scrollY);
     const onMove = (e: MouseEvent) =>
       setPointer({ x: (e.clientX / window.innerWidth - 0.5) * 2, y: (e.clientY / window.innerHeight - 0.5) * 2 });
+    const onTilt = (e: DeviceOrientationEvent) =>
+      setPointer({ x: Math.max(-1, Math.min(1, (e.gamma ?? 0) / 45)), y: Math.max(-1, Math.min(1, (e.beta ?? 0) / 90)) });
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("deviceorientation", onTilt);
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("deviceorientation", onTilt);
     };
   }, []);
 
   return (
     <section className="relative overflow-hidden">
-      <div className="container-editorial pb-16 pt-36 md:pb-24 md:pt-44">
+      <DepthAccent x={pointer.x} y={pointer.y} />
+      <div className="container-editorial relative pb-16 pt-36 md:pb-24 md:pt-44">
         <div className="grid gap-12 lg:grid-cols-[1.25fr_1fr] lg:items-end">
           <div>
             <Reveal>
               <p className="label-meta">Portfolio · {new Date().getFullYear()}</p>
             </Reveal>
-            <Reveal delay={90}>
-              <h1 className="mt-6 text-display uppercase">
-                Aniket
-                <br />
-                Bhalerao
-              </h1>
-            </Reveal>
-            <Reveal delay={180}>
-              <p className="mt-7 max-w-xl text-lede">{site.role}</p>
-            </Reveal>
-            <Reveal delay={260}>
+            <MaskText
+              as="h1"
+              text={"Aniket\nBhalerao"}
+              className="mt-6 text-display uppercase"
+              delay={120}
+              step={110}
+            />
+            <MaskText
+              as="p"
+              text={site.role}
+              className="mt-7 max-w-xl text-lede"
+              delay={420}
+              step={38}
+            />
+            <Reveal delay={620}>
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-ink-soft">{site.intro}</p>
             </Reveal>
-            <Reveal delay={340}>
+            <Reveal delay={720}>
               <div className="mt-9 flex flex-wrap gap-3">
                 <ButtonLink to="/portfolio" cursor="View">
                   Explore Portfolio
@@ -84,11 +118,13 @@ function Hero() {
               transition: "transform 700ms cubic-bezier(0.16,1,0.3,1)",
             }}
           >
-            <ImageReveal
+            <CurtainImage
               src={photos.ncc.src}
               alt={photos.ncc.alt}
               ratio="3 / 4"
               loading="eager"
+              direction="center"
+              delay={260}
               imgClassName="grayscale contrast-[1.05]"
             />
             <div className="hairline-t mt-4 flex items-center justify-between pt-3">
@@ -111,6 +147,66 @@ function Hero() {
             Scroll <ArrowDown className="size-3.5 animate-bounce" />
           </span>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/** Scroll-linked focal scale for the philosophy statement. */
+function Philosophy() {
+  const { ref, visible } = useInView<HTMLDivElement>(0.25);
+  const [scale, setScale] = useState(0.86);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setScale(1);
+      return;
+    }
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const rect = el.getBoundingClientRect();
+      const p = 1 - Math.min(1, Math.max(0, (rect.top - window.innerHeight * 0.15) / (window.innerHeight * 0.85)));
+      setScale(0.86 + p * 0.14);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [ref]);
+
+  return (
+    <section className="hairline-t hairline-b overflow-hidden bg-surface">
+      <div ref={ref} className="container-editorial py-24 md:py-36">
+        <Reveal>
+          <p className="label-meta">Philosophy</p>
+        </Reveal>
+        <p
+          className={cn(
+            "mt-8 max-w-[14ch] text-display uppercase origin-left transition-opacity duration-700",
+            visible ? "opacity-100" : "opacity-0",
+          )}
+          style={{ transform: `scale(${scale})`, willChange: "transform" }}
+        >
+          Focus. Plan. Execute.
+        </p>
+        <div className="mt-10 max-w-2xl">
+          <ScrollRule />
+        </div>
+        <Reveal delay={200}>
+          <p className="mt-8 max-w-md text-sm leading-relaxed text-ink-soft">
+            Built different is not a slogan here. It is the order of operations.
+          </p>
+        </Reveal>
       </div>
     </section>
   );
@@ -198,21 +294,7 @@ function Home() {
       </section>
 
       {/* Philosophy */}
-      <section className="hairline-t hairline-b bg-surface">
-        <div className="container-editorial py-24 md:py-36">
-          <Reveal>
-            <p className="label-meta">Philosophy</p>
-          </Reveal>
-          <Reveal delay={100}>
-            <p className="mt-8 max-w-[14ch] text-display uppercase">Focus. Plan. Execute.</p>
-          </Reveal>
-          <Reveal delay={200}>
-            <p className="mt-8 max-w-md text-sm leading-relaxed text-ink-soft">
-              Built different is not a slogan here. It is the order of operations.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      <Philosophy />
 
       {/* Services */}
       <section>
