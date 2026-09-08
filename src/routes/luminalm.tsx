@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { photos, pillars, youtube } from "@/data/site";
-import { ImageReveal, Reveal } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { CurtainImage } from "@/components/motion/Curtain";
 import { ButtonLink, CtaBand, PageHeader, SectionHead } from "@/components/sections/Common";
 import { NarrativeEngine } from "@/components/sections/NarrativeEngine";
 
@@ -30,7 +31,7 @@ function LuminaLM() {
       />
 
       <section className="container-editorial">
-        <ImageReveal src={photos.bike.src} alt={photos.bike.alt} ratio="16 / 10" imgClassName="grayscale" />
+        <CurtainImage src={photos.bike.src} alt={photos.bike.alt} ratio="16 / 10" imgClassName="grayscale" />
       </section>
 
       <section className="section-pad">

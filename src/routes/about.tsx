@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { photos, site, timeline, values } from "@/data/site";
-import { ImageReveal, Reveal } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, PageHeader, SectionHead } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/about")({
@@ -30,7 +31,7 @@ function About() {
 
       <section className="container-editorial">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:items-end">
-          <ImageReveal src={photos.campus.src} alt={photos.campus.alt} ratio="4 / 5" imgClassName="grayscale" />
+          <CurtainImage src={photos.campus.src} alt={photos.campus.alt} ratio="4 / 5" imgClassName="grayscale" />
           <div className="pb-2">
             <Reveal>
               <p className="label-meta">Personal story</p>
@@ -109,7 +110,7 @@ function About() {
               collaborative projects.
             </p>
           </div>
-          <ImageReveal src={photos.waterfall.src} alt={photos.waterfall.alt} ratio="4 / 3" imgClassName="grayscale" />
+          <CurtainImage src={photos.waterfall.src} alt={photos.waterfall.alt} ratio="4 / 3" imgClassName="grayscale" />
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getProject, projects } from "@/data/work";
-import { ImageReveal, Reveal } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, ProjectCard, SectionHead } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/portfolio/$slug")({
@@ -65,7 +66,7 @@ function ProjectDetail() {
       </header>
 
       <section className="container-editorial">
-        <ImageReveal src={project.image.src} alt={project.image.alt} ratio="16 / 10" imgClassName="grayscale" />
+        <CurtainImage src={project.image.src} alt={project.image.alt} ratio="16 / 10" imgClassName="grayscale" />
       </section>
 
       {cs ? (

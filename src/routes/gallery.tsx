@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { photos } from "@/data/site";
-import { ImageReveal, Reveal } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, PageHeader } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/gallery")({
@@ -46,7 +47,7 @@ function Gallery() {
           {items.map((it, i) => (
             <div key={it.src} className={i % 2 === 1 ? "md:mt-24" : undefined}>
               <button onClick={() => setOpen(i)} data-cursor="Expand" className="block w-full text-left">
-                <ImageReveal
+                <CurtainImage
                   src={it.src}
                   alt={it.alt}
                   ratio={it.ratio}
