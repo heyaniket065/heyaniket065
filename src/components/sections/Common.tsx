@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Reveal, ImageReveal } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { CurtainImage } from "@/components/motion/Curtain";
+import { Magnetic } from "@/components/motion/Magnetic";
 import type { Project } from "@/data/work";
 import { cn } from "@/lib/utils";
 
@@ -52,18 +54,20 @@ export function ButtonLink({
   children,
   variant = "solid",
   cursor,
+  magnetic = true,
 }: {
   to?: string;
   href?: string;
   children: ReactNode;
   variant?: "solid" | "ghost";
   cursor?: string;
+  magnetic?: boolean;
 }) {
   const cls = cn(
     "group inline-flex items-center gap-2 px-5 py-3 text-[0.85rem] tracking-[-0.01em] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
     variant === "solid"
       ? "bg-ink text-background hover:-translate-y-0.5"
-      : "border border-hairline text-ink hover:border-ink",
+      : "border border-hairline text-ink hover:border-ink hover:bg-surface",
   );
   const inner = (
     <>
@@ -71,18 +75,16 @@ export function ButtonLink({
       <ArrowRight className="size-4 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1" />
     </>
   );
-  if (href) {
-    return (
-      <a href={href} target="_blank" rel="noreferrer noopener" className={cls} data-cursor={cursor}>
-        {inner}
-      </a>
-    );
-  }
-  return (
+  const node = href ? (
+    <a href={href} target="_blank" rel="noreferrer noopener" className={cls} data-cursor={cursor}>
+      {inner}
+    </a>
+  ) : (
     <Link to={to ?? "/"} className={cls} data-cursor={cursor}>
       {inner}
     </Link>
   );
+  return magnetic ? <Magnetic>{node}</Magnetic> : node;
 }
 
 export function ProjectCard({ project, index = 0 }: { project: Project; index?: number }) {
@@ -90,8 +92,19 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
     <Reveal delay={index * 90}>
       <Link to="/portfolio/$slug" params={{ slug: project.slug }} data-cursor="View" className="group block">
         <div className="relative overflow-hidden">
-          <ImageReveal src={project.image.src} alt={project.image.alt} ratio="4 / 5" imgClassName="grayscale transition-all duration-[1400ms] group-hover:grayscale-0 group-hover:scale-[1.04]" />
+          <CurtainImage
+            src={project.image.src}
+            alt={project.image.alt}
+            ratio="4 / 5"
+            delay={index * 90}
+            imgClassName="grayscale transition-all duration-[1400ms] group-hover:grayscale-0 group-hover:scale-[1.04]"
+          />
           <span className="absolute left-4 top-4 label-meta text-background mix-blend-difference">{project.n}</span>
+          <span className="pointer-events-none absolute inset-0 hidden items-center justify-center bg-ink/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:flex">
+            <span className="inline-flex translate-y-2 items-center gap-1.5 rounded-full bg-background px-4 py-2 text-[0.72rem] uppercase tracking-[0.14em] text-ink shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
+              View Project <ArrowUpRight className="size-3.5" />
+            </span>
+          </span>
         </div>
         <div className="mt-5 flex items-start justify-between gap-4">
           <div>
