@@ -5,9 +5,10 @@ import { impact, photos, site, youtube } from "@/data/site";
 import { projects } from "@/data/work";
 import { articles } from "@/data/blog";
 import { services } from "@/data/services";
-import { Reveal, ImageReveal, useInView } from "@/components/motion/Reveal";
+import { Reveal, useInView } from "@/components/motion/Reveal";
 import { CurtainImage, ScrollRule } from "@/components/motion/Curtain";
 import { MaskText } from "@/components/motion/MaskText";
+import { cn } from "@/lib/utils";
 import { NarrativeEngine } from "@/components/sections/NarrativeEngine";
 import { ButtonLink, CtaBand, ProjectCard, SectionHead } from "@/components/sections/Common";
 
@@ -263,7 +264,7 @@ function Home() {
       <section>
         <div className="container-editorial section-pad">
           <div className="grid gap-14 lg:grid-cols-[1fr_1.15fr] lg:items-center">
-            <ImageReveal src={photos.waterfall.src} alt={photos.waterfall.alt} ratio="3 / 4" imgClassName="grayscale" />
+            <CurtainImage src={photos.waterfall.src} alt={photos.waterfall.alt} ratio="3 / 4" imgClassName="grayscale transition-transform duration-[1400ms] hover:scale-[1.03]" />
             <div>
               <Reveal>
                 <p className="label-meta">The LuminaLM story</p>
