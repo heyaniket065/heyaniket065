@@ -241,3 +241,126 @@
     cursor: none;
   }
 }
+
+/* ── Editorial motion layer ─────────────────────────────────────── */
+
+:root {
+  --azure: oklch(0.72 0.09 240);
+  --azure-soft: oklch(0.93 0.03 240);
+}
+
+@theme inline {
+  --color-azure: var(--azure);
+  --color-azure-soft: var(--azure-soft);
+}
+
+@keyframes word-rise {
+  from {
+    transform: translate3d(0, 105%, 0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes curtain-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes curtain-center {
+  from {
+    clip-path: inset(0 50% 0 50%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes line-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes ring-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) rotate(8deg);
+  }
+}
+
+.mask-line {
+  display: block;
+  overflow: hidden;
+}
+
+.mask-word {
+  display: inline-block;
+  transform: translate3d(0, 105%, 0);
+  will-change: transform;
+}
+
+.is-revealed .mask-word {
+  animation: word-rise 1.05s var(--ease-editorial) forwards;
+}
+
+.curtain img,
+.curtain-target {
+  clip-path: inset(100% 0 0 0);
+  will-change: clip-path, transform;
+}
+
+.curtain.is-revealed img,
+.curtain.is-revealed .curtain-target {
+  animation: curtain-up 1.25s var(--ease-editorial) forwards;
+}
+
+.curtain-center img {
+  clip-path: inset(0 50% 0 50%);
+}
+
+.curtain-center.is-revealed img {
+  animation: curtain-center 1.4s var(--ease-editorial) forwards;
+}
+
+.rule-draw {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.rule-draw.is-revealed {
+  animation: line-draw 1.2s var(--ease-editorial) forwards;
+}
+
+.float-ring {
+  animation: ring-float 14s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mask-word,
+  .curtain img,
+  .curtain-target,
+  .curtain-center img {
+    transform: none;
+    clip-path: none;
+    animation: none;
+  }
+  .rule-draw {
+    transform: none;
+    animation: none;
+  }
+  .float-ring {
+    animation: none;
+  }
+}

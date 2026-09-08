@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { caseStudies } from "@/data/work";
-import { ImageReveal, Reveal } from "@/components/motion/Reveal";
+import { Reveal } from "@/components/motion/Reveal";
+import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, PageHeader } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/case-studies")({
@@ -37,7 +38,7 @@ function CaseStudies() {
                 data-cursor="Read"
                 className="group grid gap-8 border-b border-hairline py-12 lg:grid-cols-[20rem_1fr] lg:gap-14"
               >
-                <ImageReveal
+                <CurtainImage
                   src={p.image.src}
                   alt={p.image.alt}
                   ratio="4 / 3"
