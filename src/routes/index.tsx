@@ -11,7 +11,7 @@ import {
   ShoppingBag,
   TerminalSquare,
 } from "lucide-react";
-import { useRef, type MouseEvent } from "react";
+import { useRef, type PointerEvent } from "react";
 import { photos } from "@/data/site";
 import { NarrativeEngine } from "@/components/sections/NarrativeEngine";
 import { HireDialog } from "@/components/sections/HireDialog";
@@ -55,7 +55,7 @@ function TiltWordmark() {
   const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-12, 12]), { stiffness: 160, damping: 20 });
   const sheenX = useTransform(mx, [-0.5, 0.5], [15, 85]);
 
-  const onMove = (event: MouseEvent<HTMLDivElement>) => {
+  const onMove = (event: PointerEvent<HTMLDivElement>) => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     mx.set((event.clientX - rect.left) / rect.width - 0.5);
@@ -63,7 +63,7 @@ function TiltWordmark() {
   };
 
   return (
-    <div ref={ref} onMouseMove={onMove} onMouseLeave={() => { mx.set(0); my.set(0); }} className="relative [perspective:1000px]">
+    <div ref={ref} onPointerMove={onMove} onPointerLeave={() => { mx.set(0); my.set(0); }} className="relative [perspective:1000px] touch-pan-y">
       <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="relative will-change-transform">
         <h1 className="display-architectural relative z-10 text-[clamp(4.45rem,18vw,15rem)] text-ink [text-shadow:0_18px_50px_color-mix(in_oklab,var(--background)_70%,transparent)]">
           ANIKET
@@ -96,7 +96,7 @@ function Hero() {
           </div>
 
           <Reveal delay={180} className="relative lg:-mb-10">
-            <div className="relative ml-auto w-full max-w-sm border border-hairline bg-surface p-3">
+            <div className="relative ml-auto w-full max-w-[13rem] border border-hairline bg-surface p-3 lg:max-w-sm">
               <CurtainImage src={photos.ncc.src} alt={photos.ncc.alt} ratio="4 / 5" loading="eager" direction="center" imgClassName="grayscale contrast-125" />
               <div className="mt-3 flex justify-between font-mono text-[9px] uppercase text-ink-soft"><span>Discipline / Direction</span><span>AB—001</span></div>
             </div>
