@@ -6,13 +6,15 @@
 
 /*
  * ANIKET BHALERAO x LUMINALM — design system.
- * Editorial luxury minimalism: white foundation, graphite ink, hairline borders,
- * near-zero radius, generous whitespace, cinematic motion.
+ * Noir Avant-Garde: near-black foundation, chalk typography, acid signal,
+ * precise hairlines, restrained texture and cinematic motion.
  */
 
 @theme inline {
-  --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: "Archivo Black", "Arial Black", sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
 
   --radius-sm: 2px;
   --radius-md: 3px;
@@ -66,31 +68,32 @@
 }
 
 :root {
-  --radius: 4px;
-  --background: oklch(1 0 0);
-  --surface: oklch(0.985 0.001 260);
-  --surface-strong: oklch(0.965 0.002 260);
-  --foreground: oklch(0.18 0.005 260);
-  --ink: oklch(0.145 0.004 260);
-  --ink-soft: oklch(0.55 0.012 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.005 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.005 260);
-  --primary: oklch(0.16 0.004 260);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.965 0.002 260);
-  --secondary-foreground: oklch(0.18 0.005 260);
-  --muted: oklch(0.965 0.002 260);
-  --muted-foreground: oklch(0.55 0.012 260);
-  --accent: oklch(0.955 0.003 260);
-  --accent-foreground: oklch(0.18 0.005 260);
+  --radius: 2px;
+  --background: oklch(0.095 0.006 260);
+  --surface: oklch(0.125 0.006 260);
+  --surface-strong: oklch(0.165 0.006 260);
+  --foreground: oklch(0.955 0.008 95);
+  --ink: oklch(0.955 0.008 95);
+  --ink-soft: oklch(0.67 0.012 260);
+  --card: oklch(0.125 0.006 260);
+  --card-foreground: oklch(0.955 0.008 95);
+  --popover: oklch(0.125 0.006 260);
+  --popover-foreground: oklch(0.955 0.008 95);
+  --primary: oklch(0.92 0.2 116);
+  --primary-foreground: oklch(0.11 0.006 260);
+  --secondary: oklch(0.18 0.007 260);
+  --secondary-foreground: oklch(0.955 0.008 95);
+  --muted: oklch(0.18 0.007 260);
+  --muted-foreground: oklch(0.67 0.012 260);
+  --accent: oklch(0.92 0.2 116);
+  --accent-foreground: oklch(0.11 0.006 260);
   --destructive: oklch(0.52 0.18 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.918 0.004 260);
-  --hairline: oklch(0.918 0.004 260);
-  --input: oklch(0.918 0.004 260);
-  --ring: oklch(0.65 0.01 260);
+  --border: oklch(1 0 0 / 14%);
+  --hairline: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 18%);
+  --ring: oklch(0.92 0.2 116);
+  --signal: oklch(0.92 0.2 116);
 }
 
 .dark {
@@ -252,6 +255,47 @@
 @theme inline {
   --color-azure: var(--azure);
   --color-azure-soft: var(--azure-soft);
+  --color-signal: var(--signal);
+}
+
+@keyframes marquee-x {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .45; transform: scale(.72); }
+}
+
+@keyframes loader-split-top {
+  to { transform: translate3d(0, -102%, 0); }
+}
+
+@keyframes loader-split-bottom {
+  to { transform: translate3d(0, 102%, 0); }
+}
+
+@utility noise-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+@utility display-architectural {
+  font-family: var(--font-display);
+  line-height: .78;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+@utility font-editorial {
+  font-family: var(--font-serif);
+}
+
+@utility marquee-track {
+  animation: marquee-x 28s linear infinite;
+}
+
+@utility status-pulse {
+  animation: status-pulse 1.8s ease-in-out infinite;
 }
 
 @keyframes word-rise {
@@ -361,6 +405,10 @@
     animation: none;
   }
   .float-ring {
+    animation: none;
+  }
+  .marquee-track,
+  .status-pulse {
     animation: none;
   }
 }
