@@ -47,14 +47,14 @@ export function Nav() {
       <header className="pointer-events-none fixed inset-x-0 top-0 z-[80] flex justify-center px-4 pt-4 md:pt-6">
         <nav
           className={cn(
-            "pointer-events-auto flex w-full max-w-[80rem] items-center justify-between gap-6 border px-4 py-3 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-6",
+            "pointer-events-auto flex w-full max-w-[84rem] items-center justify-between gap-6 border px-4 py-3 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-6",
             scrolled
-              ? "rounded-full border-hairline bg-background/70 shadow-[0_18px_50px_-30px_rgba(0,0,0,0.4)] backdrop-blur-xl"
-              : "rounded-full border-transparent bg-transparent",
+              ? "border-hairline bg-background/80 backdrop-blur-xl"
+              : "border-transparent bg-transparent",
           )}
         >
           <Link to="/" className="group flex items-baseline gap-2" aria-label="Home">
-            <span className="text-[0.95rem] font-medium tracking-[-0.02em]">{site.name}</span>
+            <span className="font-mono text-[0.76rem] font-bold uppercase">ANIKET®</span>
             <span className="label-meta hidden sm:inline">{site.brand}</span>
           </Link>
 
@@ -64,7 +64,7 @@ export function Nav() {
                 <Link
                   to={item.to}
                   className={cn(
-                    "relative rounded-full px-3 py-1.5 text-[0.8rem] tracking-[-0.01em] transition-colors duration-300",
+                    "relative px-3 py-1.5 font-mono text-[0.65rem] uppercase transition-colors duration-300",
                     isActive(item.to) ? "text-ink" : "text-ink-soft hover:text-ink",
                   )}
                 >
@@ -85,20 +85,20 @@ export function Nav() {
               onClick={() => setSearch(true)}
               aria-label="Search"
               data-cursor="Search"
-              className="grid size-9 place-items-center rounded-full border border-hairline text-ink-soft transition-colors hover:text-ink"
+              className="grid size-9 place-items-center border border-hairline text-ink-soft transition-colors hover:text-ink"
             >
               <Search className="size-4" />
             </button>
             <Link
               to="/contact"
-              className="hidden rounded-full bg-ink px-4 py-2 text-[0.78rem] tracking-[-0.01em] text-background transition-transform duration-300 hover:-translate-y-0.5 md:inline-flex"
+              className="hidden bg-primary px-4 py-2 font-mono text-[0.68rem] uppercase text-primary-foreground transition-transform duration-300 hover:-translate-y-0.5 md:inline-flex"
             >
               Start a project
             </Link>
             <button
               onClick={() => setMenu(true)}
               aria-label="Open menu"
-              className="grid size-9 place-items-center rounded-full border border-hairline lg:hidden"
+              className="grid size-9 place-items-center border border-hairline lg:hidden"
             >
               <Menu className="size-4" />
             </button>
