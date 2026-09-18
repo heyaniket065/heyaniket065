@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Github, Instagram, Mail, Send } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -14,8 +15,8 @@ const projectTypes = ["Web application", "Mobile app", "AI system", "Custom e-co
 const budgets = ["₹ INR", "$ USD", "Custom scope"];
 
 export function HireDialog() {
-  const [project, setProject] = useState(projectTypes[0]);
-  const [budget, setBudget] = useState(budgets[0]);
+  const [project, setProject] = useState("Web application");
+  const [budget, setBudget] = useState("₹ INR");
 
   return (
     <Dialog>
@@ -71,9 +72,9 @@ export function HireDialog() {
 
         <div className="mt-8 border-t border-hairline pt-6">
           <Button asChild className="h-12 w-full rounded-none bg-ink text-background hover:bg-ink/90">
-            <a href={`/contact?type=${encodeURIComponent(project)}&budget=${encodeURIComponent(budget)}`}>
+            <Link to="/contact" search={{ type: project, budget }}>
               Continue with project brief <Send />
-            </a>
+            </Link>
           </Button>
           <div className="mt-4 grid grid-cols-3 gap-px bg-hairline">
             <a href="/contact" className="flex items-center justify-center gap-2 bg-background px-3 py-4 text-xs text-ink-soft transition-colors hover:text-ink"><Mail className="size-4" /> Email</a>

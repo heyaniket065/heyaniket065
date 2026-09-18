@@ -6,14 +6,9 @@ import {
   Bot,
   Braces,
   Code2,
-  Figma,
-  Github,
   Layers3,
   PenTool,
-  Rocket,
   ShoppingBag,
-  Smartphone,
-  Sparkles,
   TerminalSquare,
 } from "lucide-react";
 import { useRef, type MouseEvent } from "react";
