@@ -72,7 +72,7 @@ export function HireDialog() {
 
         <div className="mt-8 border-t border-hairline pt-6">
           <Button asChild className="h-12 w-full rounded-none bg-ink text-background hover:bg-ink/90">
-            <Link to="/contact" search={{ type: project, budget }}>
+            <Link to="/contact">
               Continue with project brief <Send />
             </Link>
           </Button>
