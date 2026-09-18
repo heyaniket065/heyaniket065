@@ -4,11 +4,11 @@ import { primaryNav, site, socials, utilityNav } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="hairline-t bg-surface">
+    <footer className="hairline-t bg-background">
       <div className="container-editorial py-16 md:py-24">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
           <div>
-            <p className="text-[clamp(1.6rem,3vw,2.4rem)] leading-[1.02] tracking-[-0.04em]">{site.name}</p>
+            <p className="display-architectural text-[clamp(2.8rem,5vw,5.5rem)]">ANIKET</p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-soft">{site.role}</p>
             <p className="mt-8 label-meta">{site.philosophy}</p>
           </div>

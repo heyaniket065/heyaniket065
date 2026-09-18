@@ -24,7 +24,7 @@ export function PageHeader({
         <p className="label-meta">{eyebrow}</p>
       </Reveal>
       <Reveal delay={80}>
-        <h1 className="mt-6 max-w-[16ch] text-hero">{title}</h1>
+        <h1 className="mt-6 max-w-[16ch] font-editorial text-[clamp(3.4rem,7vw,7rem)] leading-[.9]">{title}</h1>
       </Reveal>
       {lede ? (
         <Reveal delay={160}>
@@ -41,7 +41,7 @@ export function SectionHead({ eyebrow, title, note }: { eyebrow: string; title: 
     <div className="flex flex-wrap items-end justify-between gap-6">
       <div>
         <p className="label-meta">{eyebrow}</p>
-        <h2 className="mt-4 max-w-[18ch] text-section">{title}</h2>
+        <h2 className="mt-4 max-w-[18ch] font-editorial text-[clamp(2.5rem,5vw,5rem)] leading-[.92]">{title}</h2>
       </div>
       {note ? <p className="max-w-sm text-sm leading-relaxed text-ink-soft">{note}</p> : null}
     </div>
@@ -66,7 +66,7 @@ export function ButtonLink({
   const cls = cn(
     "group inline-flex items-center gap-2 px-5 py-3 text-[0.85rem] tracking-[-0.01em] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
     variant === "solid"
-      ? "bg-ink text-background hover:-translate-y-0.5"
+      ? "bg-primary text-primary-foreground hover:-translate-y-0.5"
       : "border border-hairline text-ink hover:border-ink hover:bg-surface",
   );
   const inner = (
@@ -101,7 +101,7 @@ export function ProjectCard({ project, index = 0 }: { project: Project; index?: 
           />
           <span className="absolute left-4 top-4 label-meta text-background mix-blend-difference">{project.n}</span>
           <span className="pointer-events-none absolute inset-0 hidden items-center justify-center bg-ink/10 opacity-0 transition-opacity duration-500 group-hover:opacity-100 md:flex">
-            <span className="inline-flex translate-y-2 items-center gap-1.5 rounded-full bg-background px-4 py-2 text-[0.72rem] uppercase tracking-[0.14em] text-ink shadow-[0_10px_30px_-12px_rgba(0,0,0,0.35)] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
+            <span className="inline-flex translate-y-2 items-center gap-1.5 bg-primary px-4 py-2 text-[0.72rem] uppercase tracking-[0.14em] text-primary-foreground transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
               View Project <ArrowUpRight className="size-3.5" />
             </span>
           </span>
