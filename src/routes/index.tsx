@@ -97,7 +97,7 @@ function Hero() {
       <div className="container-editorial grid w-full gap-12 pb-16 lg:grid-cols-[1.5fr_.85fr] lg:items-center">
         <div className="relative z-10">
           <Reveal><p className="label-meta flex items-center gap-3"><span className="size-2 rounded-full bg-accent-yellow status-pulse" /> Building the LuminaLM ecosystem</p></Reveal>
-          <MaskText text="ANIKET\nBHALERAO" as="h1" delay={120} step={90} className="mt-8 font-display text-[clamp(4rem,11.5vw,10.5rem)] leading-[0.78] tracking-normal" />
+          <MaskText text={"ANIKET\nBHALERAO"} as="h1" delay={120} step={90} className="mt-8 font-display text-[clamp(3.75rem,10vw,9.5rem)] leading-[0.82] tracking-normal" />
           <Reveal delay={360}><p className="mt-8 font-mono text-[10px] uppercase leading-relaxed text-accent-blue sm:text-xs">BA Student <span className="text-ink-soft">|</span> Creator & Founder of LuminaLM</p></Reveal>
           <Reveal delay={440}><p className="mt-6 font-editorial text-[clamp(2rem,4vw,4rem)] leading-none">Think Better. <span className="text-accent-yellow">Build Better.</span></p></Reveal>
           <Reveal delay={520}><p className="mt-6 max-w-2xl text-sm leading-7 text-ink-soft md:text-base">Building digital experiences, websites, creative projects, tools, and future-focused ideas through LuminaLM.</p></Reveal>
