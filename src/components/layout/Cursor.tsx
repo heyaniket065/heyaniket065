@@ -49,7 +49,7 @@ export function Cursor() {
 
   return (
     <div ref={dot} aria-hidden className="pointer-events-none fixed left-0 top-0 z-[100]">
-      <div className="absolute left-1/2 top-1/2 size-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal/5 blur-3xl" />
+      <div className="absolute left-1/2 top-1/2 size-48 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-blue/10 blur-3xl" />
       <div
         className="relative flex items-center justify-center rounded-full border border-ink/40 bg-ink/5 backdrop-blur-[1px] transition-[width,height,background-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)]"
         style={{ width: active ? (label ? 76 : 40) : 12, height: active ? (label ? 76 : 40) : 12 }}
