@@ -1,30 +1,40 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import {
-  ArrowDown,
+  ArrowDownRight,
   ArrowUpRight,
   Bot,
-  Braces,
   Code2,
-  Layers3,
-  PenTool,
-  ShoppingBag,
-  TerminalSquare,
+  Facebook,
+  Github,
+  Instagram,
+  Linkedin,
+  MonitorSmartphone,
+  Play,
+  Sparkles,
+  X,
+  Youtube,
 } from "lucide-react";
 import { useRef, type PointerEvent } from "react";
-import { photos } from "@/data/site";
-import { NarrativeEngine } from "@/components/sections/NarrativeEngine";
-import { HireDialog } from "@/components/sections/HireDialog";
+import portraitAsset from "@/assets/aniket-bhalerao-portrait.png.asset.json";
+import { ecosystemProjects } from "@/data/ecosystem";
 import { Reveal } from "@/components/motion/Reveal";
+import { Magnetic } from "@/components/motion/Magnetic";
+import { MaskText } from "@/components/motion/MaskText";
 import { CurtainImage } from "@/components/motion/Curtain";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { ProjectHub } from "@/components/sections/ProjectHub";
+import { HomeContact } from "@/components/sections/HomeContact";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aniket — Creative Developer, Designer & AI Systems Engineer" },
-      { name: "description", content: "Aniket builds high-performance digital products, AI systems, commerce experiences and narrative-led brands." },
-      { property: "og:title", content: "Aniket — Creative Developer, Designer & AI Systems Engineer" },
-      { property: "og:description", content: "High-performance digital products shaped through engineering, design and disciplined execution." },
+      { title: "Aniket Bhalerao — Creator & Founder of LuminaLM" },
+      { name: "description", content: "Portfolio of Aniket Bhalerao, BA student, digital creator, website builder, AI enthusiast, storyteller, and founder of LuminaLM and ToolNami." },
+      { name: "keywords", content: "Aniket Bhalerao, LuminaLM, Digital Creator, Portfolio, Website Creator, ToolNami, AI Projects, Personal Brand" },
+      { property: "og:title", content: "Aniket Bhalerao — Creator & Founder of LuminaLM" },
+      { property: "og:description", content: "Explore the growing LuminaLM ecosystem of websites, creative projects, tools, and future-focused ideas." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -32,48 +42,47 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const tools = ["PYTHON", "REACT", "NEXT.JS", "TAILWIND", "SUPABASE", "GITHUB", "KIVY", "PYGAME", "LLM APIs", "FIGMA"];
-
-const help = [
-  { n: "01", title: "High-Performance Web Architecture & Mobile Apps", copy: "Ultra-fast, responsive interfaces and applications built around retention, clarity and scale.", icon: Braces },
-  { n: "02", title: "Custom AI Integrations & Tooling", copy: "Intelligent agent workflows, API systems and bespoke automation that remove operational drag.", icon: Bot },
-  { n: "03", title: "E-Commerce Scaling & Digital Product Funnels", copy: "Storefront architecture, conversion systems and clean checkout experiences engineered to perform.", icon: ShoppingBag },
-  { n: "04", title: "Narrative Strategy & Technical Copywriting", copy: "Editorial direction, brand identity and precise storytelling grounded in journalistic fundamentals.", icon: PenTool },
+const platforms = [
+  { name: "GitHub", handle: "heyaniket065", href: "https://github.com/heyaniket065?tab=repositories", icon: Github, className: "md:col-span-2 md:row-span-2" },
+  { name: "LinkedIn", handle: "Aniket Bhalerao", href: "https://www.linkedin.com/in/aniket-bhalerao-o07", icon: Linkedin, className: "" },
+  { name: "YouTube", handle: "@luminalm065", href: "https://youtube.com/@luminalm065", icon: Youtube, className: "" },
+  { name: "Instagram", handle: "@hey_aniket_065", href: "https://www.instagram.com/hey_aniket_065", icon: Instagram, className: "md:col-span-2" },
+  { name: "X", handle: "@Instgram136", href: "https://x.com/Instgram136", icon: X, className: "" },
+  { name: "Facebook", handle: "Connect", href: "https://www.facebook.com/share/19cdfcUFpw/", icon: Facebook, className: "" },
 ];
 
-const showcase = [
-  { n: "01", title: "Toolnami", kicker: "Flagship Utility Engine", copy: "An ultra-fast web-tools platform engineered for focused developer and creator productivity.", tags: ["Next.js", "Tailwind", "APIs", "Edge"], icon: TerminalSquare, span: "lg:col-span-2 lg:row-span-2", to: "/portfolio" as const },
-  { n: "02", title: "Neoluxe", kicker: "Curated Luxury Commerce", copy: "A polished digital storefront shaped around fluid browsing, conversion and mobile-first buying.", tags: ["Shopify", "Storefront API", "Payments"], icon: ShoppingBag, span: "lg:col-span-1", to: "/portfolio" as const },
-  { n: "03", title: "Interactive Systems", kicker: "Prototypes & Games", copy: "Purpose-built applications and interactive experiments spanning Python, Kivy and Pygame.", tags: ["Python", "Kivy", "Pygame"], icon: Layers3, span: "lg:col-span-1", to: "/portfolio" as const },
+const founderTimeline = [
+  { year: "STUDY", title: "BA Student", copy: "Building cultural, linguistic, and journalistic range through formal study." },
+  { year: "CREATE", title: "Digital Creator & Storyteller", copy: "Turning observations into stories, visual systems, and useful digital experiences." },
+  { year: "BUILD", title: "Website Builder & AI Enthusiast", copy: "Exploring modern interfaces, practical AI, and products designed around real people." },
+  { year: "FOUND", title: "Creator of LuminaLM", copy: "Growing a connected ecosystem where ideas become websites, tools, media, and future ventures." },
 ];
 
-function TiltWordmark() {
+function PortraitTilt() {
   const ref = useRef<HTMLDivElement | null>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 160, damping: 20 });
-  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-12, 12]), { stiffness: 160, damping: 20 });
-  const sheenX = useTransform(mx, [-0.5, 0.5], [15, 85]);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [4, -4]), { stiffness: 140, damping: 24 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), { stiffness: 140, damping: 24 });
+  const glowX = useTransform(x, [-0.5, 0.5], [15, 85]);
 
   const onMove = (event: PointerEvent<HTMLDivElement>) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    mx.set((event.clientX - rect.left) / rect.width - 0.5);
-    my.set((event.clientY - rect.top) / rect.height - 0.5);
+    const box = ref.current?.getBoundingClientRect();
+    if (!box) return;
+    x.set((event.clientX - box.left) / box.width - 0.5);
+    y.set((event.clientY - box.top) / box.height - 0.5);
   };
 
   return (
-    <div ref={ref} onPointerMove={onMove} onPointerLeave={() => { mx.set(0); my.set(0); }} className="relative [perspective:1000px] touch-pan-y">
-      <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="relative will-change-transform">
-        <h1 className="display-architectural relative z-10 text-[clamp(4.45rem,18vw,15rem)] text-ink [text-shadow:0_18px_50px_color-mix(in_oklab,var(--background)_70%,transparent)]">
-          ANIKET
-        </h1>
-        <motion.span
-          aria-hidden
-          style={{ left: useTransform(sheenX, (v) => `${v}%`) }}
-          className="pointer-events-none absolute inset-y-0 z-20 w-24 -skew-x-12 bg-linear-to-r from-transparent via-ink/15 to-transparent blur-md"
-        />
-        <span aria-hidden className="display-architectural absolute inset-0 translate-x-1 translate-y-2 text-transparent [-webkit-text-stroke:1px_var(--color-hairline)]">ANIKET</span>
+    <div ref={ref} onPointerMove={onMove} onPointerLeave={() => { x.set(0); y.set(0); }} className="relative mx-auto w-full max-w-[31rem] [perspective:1200px] lg:ml-auto">
+      <div className="absolute inset-[8%] rounded-full bg-accent-blue/25 blur-[90px]" />
+      <motion.div style={{ rotateX, rotateY, transformStyle: "preserve-3d" }} className="portrait-float relative border border-ink/20 bg-surface p-2 shadow-[0_30px_100px_color-mix(in_oklab,var(--accent-blue)_20%,transparent)]">
+        <CurtainImage src={portraitAsset.url} alt="Aniket Bhalerao in a professional black outfit" ratio="4 / 5" loading="eager" direction="center" imgClassName="object-cover object-[50%_28%]" />
+        <motion.div aria-hidden style={{ left: useTransform(glowX, (value) => `${value}%`) }} className="pointer-events-none absolute inset-y-2 w-16 -skew-x-12 bg-linear-to-r from-transparent via-ink/15 to-transparent blur-lg" />
+        <div className="absolute inset-x-5 bottom-5 flex items-end justify-between border border-ink/15 bg-background/70 p-3 backdrop-blur-xl">
+          <div><p className="font-mono text-[9px] uppercase text-accent-yellow">Creator / Founder</p><p className="mt-1 text-sm font-semibold">LuminaLM</p></div>
+          <span className="size-2 rounded-full bg-accent-yellow status-pulse" />
+        </div>
       </motion.div>
     </div>
   );
@@ -81,125 +90,132 @@ function TiltWordmark() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[100svh] overflow-hidden border-b border-hairline pt-28">
-      <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.035]" />
-      <div className="container-editorial relative flex min-h-[calc(100svh-7rem)] flex-col justify-between pb-6">
-        <div className="grid gap-8 lg:grid-cols-[1fr_22rem] lg:items-end">
-          <div className="relative z-20">
-            <Reveal><p className="label-meta flex items-center gap-3"><span className="status-pulse size-2 rounded-full bg-signal" /> Available for high-impact client projects</p></Reveal>
-            <div className="mt-10"><TiltWordmark /></div>
-            <Reveal delay={340}>
-              <p className="mt-8 max-w-3xl text-[clamp(1rem,1.8vw,1.45rem)] leading-[1.55] text-ink-soft">
-                Second-Year Arts Scholar (Marathi Journalism) <span className="text-signal">•</span> Full-Stack Web & App Architect <span className="text-signal">•</span> AI Systems Engineer <span className="text-signal">•</span> Calisthenics & Track Athlete.
-              </p>
+    <section className="premium-grid relative flex min-h-[100svh] items-center overflow-hidden border-b border-hairline pt-28">
+      <div aria-hidden className="particle-drift absolute left-[8%] top-[22%] size-1 bg-accent-yellow" />
+      <div aria-hidden className="particle-drift absolute right-[9%] top-[17%] size-1 bg-accent-blue [animation-delay:1.4s]" />
+      <div aria-hidden className="particle-drift absolute bottom-[14%] left-[48%] size-1 bg-ink [animation-delay:2.8s]" />
+      <div className="container-editorial grid w-full gap-12 pb-16 lg:grid-cols-[1.5fr_.85fr] lg:items-center">
+        <div className="relative z-10">
+          <Reveal><p className="label-meta flex items-center gap-3"><span className="size-2 rounded-full bg-accent-yellow status-pulse" /> Building the LuminaLM ecosystem</p></Reveal>
+          <MaskText text={"ANIKET\nBHALERAO"} as="h1" delay={120} step={90} className="mt-8 font-display text-[clamp(3.75rem,10vw,9.5rem)] leading-[0.82] tracking-normal" />
+          <Reveal delay={360}><p className="mt-8 font-mono text-[10px] uppercase leading-relaxed text-accent-blue sm:text-xs">BA Student <span className="text-ink-soft">|</span> Creator & Founder of LuminaLM</p></Reveal>
+          <Reveal delay={440}><p className="mt-6 font-editorial text-[clamp(2rem,4vw,4rem)] leading-none">Think Better. <span className="text-accent-yellow">Build Better.</span></p></Reveal>
+          <Reveal delay={520}><p className="mt-6 max-w-2xl text-sm leading-7 text-ink-soft md:text-base">Building digital experiences, websites, creative projects, tools, and future-focused ideas through LuminaLM.</p></Reveal>
+          <Reveal delay={600} className="mt-9 flex flex-wrap gap-3">
+            <Magnetic><a href="#ecosystem" className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-none bg-accent-blue px-6 text-primary-foreground hover:bg-accent-blue/90")}>Explore Projects <ArrowDownRight /></a></Magnetic>
+            <Magnetic><ProjectHub /></Magnetic>
+            <Magnetic><a href="#contact" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "h-12 rounded-none border-hairline bg-transparent px-6 hover:border-accent-yellow hover:bg-accent-yellow/10 hover:text-ink")}>Connect With Me</a></Magnetic>
+          </Reveal>
+        </div>
+        <Reveal delay={240}><PortraitTilt /></Reveal>
+      </div>
+    </section>
+  );
+}
+
+function PlatformHub() {
+  return (
+    <section className="container-editorial section-pad">
+      <Reveal className="grid gap-6 md:grid-cols-[1fr_.65fr] md:items-end">
+        <div><p className="label-meta text-accent-yellow">Platform hub / Online</p><h2 className="mt-5 max-w-3xl font-display text-[clamp(3rem,7vw,7rem)] leading-[0.86] tracking-normal">ONE CREATOR.<br />MANY SURFACES.</h2></div>
+        <p className="max-w-md text-sm leading-relaxed text-ink-soft md:justify-self-end">Follow the work, code, films, posts, and evolving ideas across Aniket's connected digital presence.</p>
+      </Reveal>
+      <div className="mt-14 grid auto-rows-[11rem] gap-3 md:grid-cols-4">
+        {platforms.map((platform, index) => {
+          const Icon = platform.icon;
+          return (
+            <Reveal key={platform.name} delay={index * 60} className={platform.className}>
+              <Magnetic strength={0.08} className="h-full w-full">
+                <a href={platform.href} target="_blank" rel="noreferrer noopener" className="group relative flex h-full w-full flex-col justify-between overflow-hidden border border-hairline bg-surface p-5 transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-accent-blue/70 hover:shadow-[0_18px_60px_color-mix(in_oklab,var(--accent-blue)_14%,transparent)]">
+                  <div className="flex items-center justify-between"><Icon className="size-6 transition-all duration-500 group-hover:scale-110 group-hover:text-accent-yellow" /><ArrowUpRight className="size-4 text-ink-soft transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" /></div>
+                  <div><p className={index === 0 ? "text-4xl font-semibold" : "text-xl font-semibold"}>{platform.name}</p><p className="mt-2 font-mono text-[9px] uppercase text-ink-soft">{platform.handle}</p></div>
+                </a>
+              </Magnetic>
             </Reveal>
-          </div>
-
-          <Reveal delay={180} className="relative lg:-mb-10">
-            <div className="relative ml-auto w-full max-w-[13rem] border border-hairline bg-surface p-3 lg:max-w-sm">
-              <CurtainImage src={photos.ncc.src} alt={photos.ncc.alt} ratio="4 / 5" loading="eager" direction="center" imgClassName="grayscale contrast-125" />
-              <div className="mt-3 flex justify-between font-mono text-[9px] uppercase text-ink-soft"><span>Discipline / Direction</span><span>AB—001</span></div>
-            </div>
-          </Reveal>
-        </div>
-
-        <div className="mt-14 grid gap-6 border-t border-hairline pt-5 md:grid-cols-[1fr_auto] md:items-end">
-          <Reveal delay={500}>
-            <p className="max-w-xl font-editorial text-2xl leading-tight md:text-3xl">Ready to scale bold ideas into profitable, high-performing digital infrastructure.</p>
-          </Reveal>
-          <div className="flex flex-wrap items-center gap-3">
-            <HireDialog />
-            <Link to="/portfolio" className="flex h-12 items-center gap-2 border border-hairline px-5 font-mono text-[0.68rem] uppercase transition-colors hover:border-ink">Selected work <ArrowUpRight className="size-4" /></Link>
-          </div>
-        </div>
-
-        <div className="mt-8 flex items-center justify-between label-meta"><span>Scroll to enter the system</span><ArrowDown className="size-4 animate-bounce text-signal" /></div>
-      </div>
-    </section>
-  );
-}
-
-function Marquee() {
-  const repeated = [...tools, ...tools];
-  return (
-    <section aria-label="Technology stack" className="relative overflow-hidden border-b border-hairline py-6">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-background to-transparent md:w-40" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-background to-transparent md:w-40" />
-      <div className="marquee-track flex w-max items-center">
-        {repeated.map((tool, i) => <div key={`${tool}-${i}`} className="flex items-center gap-6 px-6 font-mono text-xs uppercase text-ink-soft"><Code2 className="size-4 text-signal" />{tool}<span className="text-hairline">/</span></div>)}
-      </div>
-    </section>
-  );
-}
-
-function AboutMatrix() {
-  const pillars = [
-    ["01", "Software & Product Engineering", "Scalable web systems, cross-platform apps and interactive design systems."],
-    ["02", "AI Workflows & Automation", "LLMs, agentic systems and algorithms that remove real operational bottlenecks."],
-    ["03", "Digital Commerce & Ventures", "High-converting storefronts, digital products and automated commerce engines."],
-    ["04", "Discipline & Physical Execution", "Endurance, calisthenics and a training mindset translated into reliable delivery."],
-  ];
-  return (
-    <section className="container-editorial section-pad">
-      <div className="grid gap-12 lg:grid-cols-[.75fr_1.5fr]">
-        <Reveal>
-          <p className="label-meta text-signal">About / operating system</p>
-          <h2 className="mt-5 font-editorial text-[clamp(3rem,6vw,6rem)] leading-[.9]">Language. Discipline. Engineering.</h2>
-          <p className="mt-7 max-w-md text-sm leading-relaxed text-ink-soft">Journalistic storytelling gives the work depth. Physical discipline gives it rhythm. Technical engineering turns both into systems that perform under pressure.</p>
-        </Reveal>
-        <div className="grid gap-px bg-hairline sm:grid-cols-2">
-          {pillars.map(([n, title, copy], i) => <Reveal key={n} delay={i * 75} className="group min-h-64 bg-surface p-6 transition-colors hover:bg-surface-strong md:p-8"><div className="flex h-full flex-col justify-between"><span className="font-mono text-xs text-signal">{n}</span><div><h3 className="font-editorial text-3xl leading-none">{title}</h3><p className="mt-4 text-sm leading-relaxed text-ink-soft">{copy}</p></div></div></Reveal>)}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function HelpSection() {
-  return (
-    <section className="border-y border-hairline bg-surface">
-      <div className="container-editorial section-pad grid gap-16 lg:grid-cols-[.8fr_1.2fr]">
-        <div className="lg:sticky lg:top-32 lg:self-start">
-          <p className="label-meta text-signal">Capabilities / 04</p>
-          <h2 className="mt-5 max-w-[10ch] font-editorial text-[clamp(3.2rem,6vw,6.5rem)] leading-[.88]">What I help you to shape...</h2>
-          <div className="mt-10 h-px bg-hairline"><div className="h-px w-2/3 bg-signal" /></div>
-          <p className="mt-4 label-meta">Strategy → System → Scale</p>
-        </div>
-        <div>
-          {help.map((item, i) => {
-            const Icon = item.icon;
-            return <Reveal key={item.n} delay={i * 90}><article className="group border-t border-hairline py-10 last:border-b md:py-14"><div className="grid gap-7 md:grid-cols-[3rem_1fr_auto]"><span className="font-mono text-xs text-signal">{item.n}</span><div><h3 className="max-w-xl text-2xl font-medium leading-tight md:text-4xl">{item.title}</h3><p className="mt-5 max-w-lg text-sm leading-relaxed text-ink-soft">{item.copy}</p></div><Icon className="size-7 text-ink-soft transition-all duration-500 group-hover:-translate-y-1 group-hover:text-signal" /></div></article></Reveal>;
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function ProjectShowcase() {
-  return (
-    <section className="container-editorial section-pad">
-      <Reveal><div className="flex flex-wrap items-end justify-between gap-6"><div><p className="label-meta text-signal">Selected systems / 03</p><h2 className="mt-4 font-editorial text-[clamp(3rem,6vw,6rem)] leading-none">Built to move.</h2></div><Link to="/portfolio" className="link-underline flex items-center gap-2 text-sm">Full archive <ArrowUpRight className="size-4" /></Link></div></Reveal>
-      <div className="mt-14 grid auto-rows-[minmax(20rem,auto)] gap-3 lg:grid-cols-3">
-        {showcase.map((project, i) => {
-          const Icon = project.icon;
-          return <Reveal key={project.n} delay={i * 90} className={project.span}><Link to={project.to} className="group relative flex h-full min-h-[22rem] flex-col justify-between overflow-hidden border border-hairline bg-surface p-7 transition-colors hover:bg-surface-strong md:p-9"><div className="absolute -right-8 -top-8 size-48 rounded-full border border-hairline transition-transform duration-700 group-hover:scale-125" /><div className="flex items-center justify-between"><span className="font-mono text-xs text-signal">{project.n} / CASE</span><Icon className="size-6 text-ink-soft" /></div><div className="relative"><p className="label-meta">{project.kicker}</p><h3 className={`mt-4 font-editorial leading-none ${i === 0 ? "text-[clamp(4rem,8vw,8rem)]" : "text-5xl"}`}>{project.title}</h3><p className="mt-5 max-w-lg text-sm leading-relaxed text-ink-soft">{project.copy}</p><div className="mt-7 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="border border-hairline px-2.5 py-1 font-mono text-[9px] uppercase text-ink-soft">{tag}</span>)}</div></div><ArrowUpRight className="absolute bottom-7 right-7 size-6 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-signal" /></Link></Reveal>;
+          );
         })}
       </div>
     </section>
   );
 }
 
-function ClosingCta() {
+function FounderStory() {
   return (
-    <section className="border-t border-hairline bg-primary text-primary-foreground">
-      <div className="container-editorial py-20 md:py-32">
-        <Reveal><div className="flex flex-wrap items-end justify-between gap-10"><div><p className="font-mono text-[0.68rem] uppercase">Open for business / 2026</p><h2 className="mt-5 max-w-[12ch] font-editorial text-[clamp(3.5rem,8vw,8rem)] leading-[.86]">A serious idea deserves serious execution.</h2></div><HireDialog /></div></Reveal>
+    <section className="border-y border-hairline bg-surface">
+      <div className="container-editorial section-pad grid gap-16 lg:grid-cols-[.82fr_1.18fr]">
+        <Reveal className="lg:sticky lg:top-32 lg:self-start">
+          <p className="label-meta text-accent-yellow">Founder story / Becoming</p>
+          <h2 className="mt-5 font-editorial text-[clamp(3.2rem,7vw,7rem)] leading-[0.88]">Learn. Create. Improve.</h2>
+          <p className="mt-7 max-w-md text-sm leading-relaxed text-ink-soft">Aniket is shaping a multidisciplinary path through study, storytelling, technology, and disciplined execution—building each project as part of a larger body of work.</p>
+        </Reveal>
+        <div className="relative border-l border-hairline pl-7 md:pl-12">
+          {founderTimeline.map((item, index) => (
+            <Reveal key={item.year} delay={index * 70} className="relative border-b border-hairline py-10 first:pt-0 last:border-0">
+              <span className="absolute -left-[2.05rem] top-11 size-2.5 rounded-full border border-accent-blue bg-surface md:-left-[3.35rem]" />
+              <p className="font-mono text-[10px] uppercase text-accent-blue">0{index + 1} / {item.year}</p>
+              <h3 className="mt-4 text-2xl font-semibold md:text-4xl">{item.title}</h3>
+              <p className="mt-4 max-w-xl text-sm leading-relaxed text-ink-soft">{item.copy}</p>
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
+function ToolNamiSpotlight() {
+  const toolnami = ecosystemProjects[4];
+  return (
+    <section className="container-editorial section-pad">
+      <Reveal><p className="label-meta text-accent-yellow">Featured project / ToolNami</p></Reveal>
+      <Reveal delay={80} className="mt-8 overflow-hidden border border-accent-blue/40 bg-surface shadow-[0_30px_100px_color-mix(in_oklab,var(--accent-blue)_12%,transparent)]">
+        <div className="grid lg:grid-cols-[1.3fr_.7fr]">
+          <div className="group aspect-[16/10] overflow-hidden border-b border-hairline lg:border-b-0 lg:border-r">
+            <img src={toolnami.image} alt="ToolNami website preview" className="h-full w-full object-cover object-top transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]" />
+          </div>
+          <div className="flex flex-col justify-between p-7 md:p-10">
+            <div><div className="flex items-center gap-3"><Sparkles className="size-5 text-accent-yellow" /><span className="label-meta">Flagship utility platform</span></div><h2 className="mt-8 font-display text-[clamp(3.5rem,7vw,7rem)] leading-[0.82] tracking-normal">TOOL<br />NAMI</h2><p className="mt-7 text-sm leading-relaxed text-ink-soft">Professional online tools platform focused on productivity tools, PDF utilities, image tools, and creator-focused solutions.</p></div>
+            <Button asChild size="lg" className="mt-10 h-12 w-fit rounded-none bg-accent-blue text-primary-foreground hover:bg-accent-blue/90"><a href={toolnami.url} target="_blank" rel="noreferrer noopener">Open ToolNami <ArrowUpRight /></a></Button>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+  );
+}
+
+function Ecosystem() {
+  return (
+    <section id="ecosystem" className="border-y border-hairline bg-surface">
+      <div className="container-editorial section-pad">
+        <Reveal className="grid gap-8 lg:grid-cols-[1fr_.7fr] lg:items-end">
+          <div><p className="label-meta text-accent-yellow">07 connected properties</p><h2 className="mt-5 font-display text-[clamp(3rem,7vw,7rem)] leading-[0.86] tracking-normal">EXPLORE MY<br />DIGITAL ECOSYSTEM</h2></div>
+          <div className="lg:justify-self-end"><p className="mb-6 max-w-md text-sm leading-relaxed text-ink-soft">Explore all my websites, projects, experiments and digital creations from one place.</p><ProjectHub /></div>
+        </Reveal>
+        <div className="mt-14 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {ecosystemProjects.map((project, index) => (
+            <Reveal key={project.url} delay={(index % 3) * 70} className={index === 4 ? "lg:col-span-2" : ""}>
+              <article className="group flex h-full flex-col border border-hairline bg-background transition-colors duration-500 hover:border-accent-blue/60">
+                <div className="aspect-[16/10] overflow-hidden border-b border-hairline"><img src={project.image} alt={`${project.title} website preview`} loading="lazy" className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]" /></div>
+                <div className="flex flex-1 flex-col p-5"><p className="font-mono text-[9px] uppercase text-accent-blue">{project.number} / {project.type}</p><h3 className="mt-4 text-2xl font-semibold">{project.title}</h3><p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">{project.description}</p><Button asChild variant="outline" className="mt-6 w-fit rounded-none border-hairline bg-transparent hover:border-accent-yellow hover:bg-accent-yellow/10 hover:text-ink"><a href={project.url} target="_blank" rel="noreferrer noopener">Visit website <ArrowUpRight /></a></Button></div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Manifesto() {
+  const items = [
+    { icon: Code2, text: "Websites & digital products" },
+    { icon: Bot, text: "AI projects & useful tools" },
+    { icon: Play, text: "Stories & visual media" },
+    { icon: MonitorSmartphone, text: "Future-focused experiments" },
+  ];
+  return <section className="container-editorial section-pad"><Reveal><p className="label-meta text-accent-yellow">LuminaLM / Operating system</p><h2 className="mt-5 max-w-5xl font-editorial text-[clamp(3rem,7vw,7rem)] leading-[.9]">Stories, strategy & growth—built into a living digital ecosystem.</h2></Reveal><div className="mt-14 grid gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-4">{items.map((item, i) => { const Icon = item.icon; return <Reveal key={item.text} delay={i * 60} className="bg-background p-6"><Icon className="size-6 text-accent-blue" /><p className="mt-16 text-lg font-medium">{item.text}</p></Reveal>; })}</div><Reveal delay={280}><p className="mt-14 border-t border-hairline pt-8 font-display text-[clamp(2.4rem,6vw,6rem)] leading-[.86] tracking-normal">FOCUS. PLAN. EXECUTE.</p></Reveal></section>;
+}
+
 function Home() {
-  return <><Hero /><Marquee /><AboutMatrix /><NarrativeEngine /><HelpSection /><ProjectShowcase /><Marquee /><ClosingCta /></>;
+  return <><Hero /><PlatformHub /><FounderStory /><ToolNamiSpotlight /><Ecosystem /><Manifesto /><HomeContact /></>;
 }

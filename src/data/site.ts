@@ -6,10 +6,10 @@ import bikeAsset from "@/assets/jersey-bike.png.asset.json";
 export const site = {
   name: "Aniket Bhalerao",
   brand: "LuminaLM",
-  role: "Digital Creator · Strategic Storyteller · Creator of LuminaLM",
-  philosophy: "Focus. Plan. Execute. Built Different.",
+  role: "BA Student · Creator & Founder of LuminaLM",
+  philosophy: "Think Better. Build Better.",
   intro:
-    "A modern creator building narratives, strategic media experiences and thoughtful digital work through storytelling, psychology, strategy and visual communication.",
+    "Building digital experiences, websites, creative projects, tools, and future-focused ideas through LuminaLM.",
 } as const;
 
 export const photos = {
@@ -54,14 +54,15 @@ export const utilityNav = [
 ] as const;
 
 export const socials = [
-  { label: "YouTube", href: "https://youtube.com/@luminalm065?si=Iw1bzTNArqZoKB3Y" },
-  { label: "Instagram", href: "https://www.instagram.com/hey_aniket_065?stkn=bnZ5bmo3Z3dkdWRy" },
+  { label: "GitHub", href: "https://github.com/heyaniket065?tab=repositories" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/aniket-bhalerao-o07" },
+  { label: "YouTube", href: "https://youtube.com/@luminalm065" },
+  { label: "Instagram", href: "https://www.instagram.com/hey_aniket_065" },
   { label: "X", href: "https://x.com/Instgram136" },
   { label: "Facebook", href: "https://www.facebook.com/share/19cdfcUFpw/" },
-  { label: "Amazon", href: "https://link.amazon/B0hOMvrtG" },
 ] as const;
 
-export const youtube = "https://youtube.com/@luminalm065?si=Iw1bzTNArqZoKB3Y";
+export const youtube = "https://youtube.com/@luminalm065";
 
 export const impact = [
   { n: "01", title: "Reach", copy: "Digital audience and content distribution." },
