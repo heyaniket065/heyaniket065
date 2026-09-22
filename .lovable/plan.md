@@ -1,30 +1,37 @@
-# Portfolio Content Alignment
+# Professional Portfolio Upgrade
 
 ## Goal
-Use Aniket Bhalerao’s supplied identity, biography, skills, project focus, social channels, LuminaLM brand, and tagline consistently across the existing portfolio without changing its established premium dark design or route structure.
+Upgrade the existing Aniket Bhalerao × LuminaLM portfolio without redesigning its established dark premium identity. Make the content clearer, navigation more complete, desktop presentation richer, and every page responsive.
 
-## Content Updates
-- Make the primary role consistent: “Digital Creator • AI Enthusiast • Developer • Strategic Storyteller.”
-- Use the supplied About Me text as the factual source for biography and founder-story sections; remove conflicting or unsupported positioning.
-- Add a polished skills presentation covering all supplied skills: AI & LLMs, Python, GitHub, Figma, HTML/CSS/JavaScript, UI/UX Design, Content Creation, CapCut video editing, Graphic Design, and Prompt Engineering.
-- Present the four supplied project areas where portfolio scope is summarized: LuminaLM, ToolNami, AI Experiments & Research Projects, and Portfolio & Web Development Projects.
-- Keep the existing verified social URLs, while emphasizing the requested YouTube, Instagram, X, and Facebook channels where social presence is summarized.
-- Keep “LuminaLM” and “Think Better. Build Better.” prominent and consistent.
+## Content and Navigation
+- Standardize the profile across relevant pages:
+  - **Aniket Bhalerao**
+  - **Digital Creator • AI Enthusiast • Developer • Strategic Storyteller**
+  - **LuminaLM — Think Better. Build Better.**
+- Update the primary navigation to: Home, About Me, Skills, Experience, Services, Projects, Case Studies, Videos, and Contact.
+- Preserve all existing public routes and useful secondary pages; “Projects” will link to the existing portfolio route.
+- Keep the supplied social profiles and existing contact actions intact.
 
-## Pages and Shared Content
-- Update shared site data so navigation, footer, reusable calls-to-action, FAQs, and other shared references inherit the new positioning.
-- Revise the homepage hero, founder story, capability/skills content, project framing, and metadata.
-- Revise the About page biography, focus areas, timeline, and values-adjacent copy to match the supplied information.
-- Align LuminaLM, Portfolio, Services, Contact, and other relevant page descriptions and SEO metadata where they currently use outdated positioning.
-- Preserve all routes, authentic photographs, project URLs, social URLs, existing contact behavior, and motion interactions.
+## Homepage Upgrade
+- Refine the current hero copy with the new role and biography while retaining the portrait, LuminaLM branding, loader, dark palette, and existing interactions.
+- Add compact, polished previews for About Me, Skills, Experience, and Videos so visitors can understand the full profile from the homepage.
+- Retain the platform hub, ToolNami spotlight, digital ecosystem, projects, and contact close.
+- Improve large-screen composition, spacing, card hierarchy, hover depth, and reveal pacing without changing the visual direction.
 
-## Technical Details
-- Keep content centralized in the existing data modules where practical to avoid future inconsistencies.
-- Reuse the current semantic design tokens, typography, responsive layouts, and motion components.
-- Add no backend or new external integration; this is a content and presentation update only.
+## New and Updated Pages
+- **About Me:** Replace outdated biography with the supplied first-person story and present creator interests, working approach, and LuminaLM identity clearly.
+- **Skills:** Add a dedicated visual skill system for AI & LLMs, Python, GitHub, Figma, HTML/CSS/JavaScript, UI/UX, content creation, CapCut, graphic design, prompt engineering, Photoshop, Illustrator, and After Effects.
+- **Experience:** Create a clean timeline combining verified creator roles and project experience: LuminaLM, ToolNami, AI experiments/research, and portfolio/web development. No invented employers, dates, or metrics.
+- **Videos:** Add a dedicated video page featuring the supplied YouTube video (`brPc_3KXcB8`) with a responsive embed, channel link, and a layout ready for additional verified videos later.
+- **Projects and Case Studies:** Keep existing project detail routes and content, while aligning headings and descriptions with the updated creator/developer positioning.
 
-## Verification
-- Check every content route for outdated role or biography wording.
-- Verify all supplied skills and four project areas appear clearly.
-- Confirm the requested social links and LuminaLM tagline remain correct.
-- Validate the updated homepage and About page at desktop and mobile sizes, then check the browser console and route metadata.
+## Motion and Interaction
+- Reuse the existing Lenis, Motion, reveal, curtain, magnetic, loader, cursor, and scroll-progress systems.
+- Add restrained staggered entrances, skill-card hover states, timeline progress cues, and video reveal transitions.
+- Preserve reduced-motion and touch-friendly fallbacks; avoid heavy effects that would slow mobile devices.
+
+## Responsive and Quality Checks
+- Make the expanded navigation easy to scan on desktop and usable in the existing mobile menu.
+- Verify text wrapping, embedded video sizing, card grids, and interaction states at mobile and desktop widths.
+- Ensure every new content route has unique title, description, Open Graph metadata, `og:type`, and Twitter card metadata.
+- Check all internal links, the supplied video, existing project links, browser console, and visible layouts before completion.

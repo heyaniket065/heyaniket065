@@ -1,11 +1,11 @@
 {
+  "version": 1,
   "asset_id": "ba283755-4341-41dc-8d77-51ed4ebc550a",
-  "content_type": "image/jpeg",
-  "created_at": "2026-09-21T10:37:55Z",
-  "original_filename": "toolnami-studio.jpg",
-  "project_id": "347901ec-f086-4fb1-a7d0-dc6e17c73f94",
-  "r2_key": "a/v1/347901ec-f086-4fb1-a7d0-dc6e17c73f94/ba283755-4341-41dc-8d77-51ed4ebc550a/toolnami-studio.jpg",
-  "size": 30964,
+  "project_id": "76a3633b-0423-455a-8b12-042fd8222461",
   "url": "/__l5e/assets-v1/ba283755-4341-41dc-8d77-51ed4ebc550a/toolnami-studio.jpg",
-  "version": 1
+  "r2_key": "a/v1/76a3633b-0423-455a-8b12-042fd8222461/ba283755-4341-41dc-8d77-51ed4ebc550a/toolnami-studio.jpg",
+  "original_filename": "toolnami-studio.jpg",
+  "size": 30964,
+  "content_type": "image/jpeg",
+  "created_at": "2026-09-21T10:37:55Z"
 }
