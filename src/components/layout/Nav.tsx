@@ -58,20 +58,20 @@ export function Nav() {
             <span className="label-meta hidden sm:inline">{site.brand}</span>
           </Link>
 
-          <ul className="hidden items-center gap-1 lg:flex">
+          <ul className="hidden items-center gap-0 xl:flex">
             {primaryNav.map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
                   className={cn(
-                    "relative px-3 py-1.5 font-mono text-[0.65rem] uppercase transition-colors duration-300",
+                    "relative px-2 py-1.5 font-mono text-[0.58rem] uppercase transition-colors duration-300 2xl:px-3 2xl:text-[0.65rem]",
                     isActive(item.to) ? "text-ink" : "text-ink-soft hover:text-ink",
                   )}
                 >
                   {item.label}
                   <span
                     className={cn(
-                      "absolute inset-x-3 -bottom-0.5 h-px origin-left bg-ink transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
+                      "absolute inset-x-2 -bottom-0.5 h-px origin-left bg-ink transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] 2xl:inset-x-3",
                       isActive(item.to) ? "scale-x-100" : "scale-x-0",
                     )}
                   />
@@ -98,7 +98,7 @@ export function Nav() {
             <button
               onClick={() => setMenu(true)}
               aria-label="Open menu"
-              className="grid size-9 place-items-center border border-hairline lg:hidden"
+               className="grid size-9 place-items-center border border-hairline xl:hidden"
             >
               <Menu className="size-4" />
             </button>
@@ -107,7 +107,7 @@ export function Nav() {
       </header>
 
       {menu ? (
-        <div className="fixed inset-0 z-[95] flex flex-col bg-background lg:hidden">
+         <div className="fixed inset-0 z-[95] flex flex-col bg-background xl:hidden">
           <div className="flex items-center justify-between px-5 py-5">
             <span className="label-meta">Menu</span>
             <button onClick={() => setMenu(false)} aria-label="Close menu" className="grid size-9 place-items-center border border-hairline">

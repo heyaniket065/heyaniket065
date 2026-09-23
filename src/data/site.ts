@@ -6,10 +6,10 @@ import bikeAsset from "@/assets/jersey-bike.png.asset.json";
 export const site = {
   name: "Aniket Bhalerao",
   brand: "LuminaLM",
-  role: "BA Student · Creator & Founder of LuminaLM",
+  role: "Digital Creator • AI Enthusiast • Developer • Strategic Storyteller",
   philosophy: "Think Better. Build Better.",
   intro:
-    "Building digital experiences, websites, creative projects, tools, and future-focused ideas through LuminaLM.",
+    "I build useful tools, experiment with AI systems, design digital products, and create content that combines creativity with technology.",
 } as const;
 
 export const photos = {
@@ -37,17 +37,20 @@ export const photos = {
 
 export const primaryNav = [
   { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
+  { label: "About Me", to: "/about" },
+  { label: "Skills", to: "/skills" },
+  { label: "Experience", to: "/experience" },
   { label: "Services", to: "/services" },
-  { label: "Portfolio", to: "/portfolio" },
+  { label: "Projects", to: "/portfolio" },
   { label: "Case Studies", to: "/case-studies" },
-  { label: "Blog", to: "/blog" },
-  { label: "Resources", to: "/resources" },
+  { label: "Videos", to: "/videos" },
   { label: "Contact", to: "/contact" },
 ] as const;
 
 export const utilityNav = [
   { label: "LuminaLM", to: "/luminalm" },
+  { label: "Blog", to: "/blog" },
+  { label: "Resources", to: "/resources" },
   { label: "Gallery", to: "/gallery" },
   { label: "Pricing", to: "/pricing" },
   { label: "FAQ", to: "/faq" },
