@@ -14,6 +14,8 @@ export const Route = createFileRoute("/case-studies")({
       },
       { property: "og:title", content: "Case Studies — How the Work Was Built" },
       { property: "og:description", content: "Long-form breakdowns of selected projects and the thinking behind them." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: CaseStudies,

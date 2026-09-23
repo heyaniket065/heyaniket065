@@ -14,6 +14,8 @@ export const Route = createFileRoute("/portfolio/")({
       },
       { property: "og:title", content: "Portfolio — Selected Work by Aniket Bhalerao" },
       { property: "og:description", content: "Selected projects across strategy, storytelling, video and psychology." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Portfolio,

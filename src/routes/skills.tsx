@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Braces, BrainCircuit, Clapperboard, PenTool, Sparkles } from "lucide-react";
+import { Braces, BrainCircuit, Clapperboard, PenTool, Sparkles, type LucideIcon } from "lucide-react";
 import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand, PageHeader } from "@/components/sections/Common";
 import { skillGroups } from "@/data/profile";
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/skills")({
   component: SkillsPage,
 });
 
-const icons = [BrainCircuit, Braces, PenTool, Clapperboard] as const;
+const icons: LucideIcon[] = [BrainCircuit, Braces, PenTool, Clapperboard];
 
 function SkillsPage() {
   return (
@@ -31,7 +31,7 @@ function SkillsPage() {
       <section className="container-editorial pb-24 md:pb-36">
         <div className="grid gap-3 lg:grid-cols-2">
           {skillGroups.map((group, index) => {
-            const Icon = icons[index];
+            const Icon = icons[index] ?? Sparkles;
             return (
               <Reveal key={group.label} delay={index * 70}>
                 <article className="group flex min-h-[25rem] flex-col border border-hairline bg-surface p-6 transition-[transform,border-color] duration-500 hover:-translate-y-1 hover:border-accent-blue/60 md:p-8">

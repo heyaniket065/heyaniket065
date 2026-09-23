@@ -14,6 +14,8 @@ export const Route = createFileRoute("/services/")({
       },
       { property: "og:title", content: "Services — Aniket Bhalerao" },
       { property: "og:description", content: "Strategy, storytelling, direction and craft — the ways of working together." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Services,

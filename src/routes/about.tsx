@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { photos, site, timeline, values } from "@/data/site";
+import { photos, timeline, values } from "@/data/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, PageHeader, SectionHead } from "@/components/sections/Common";
