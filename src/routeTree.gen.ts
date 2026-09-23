@@ -13,12 +13,15 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ExperienceRouteImport } from './routes/experience'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as LuminalmRouteImport } from './routes/luminalm'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SkillsRouteImport } from './routes/skills'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as VideosRouteImport } from './routes/videos'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as PortfolioIndexRouteImport } from './routes/portfolio.index'
@@ -48,6 +51,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExperienceRoute = ExperienceRouteImport.update({
+  id: '/experience',
+  path: '/experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaqRoute = FaqRouteImport.update({
   id: '/faq',
   path: '/faq',
@@ -73,9 +81,19 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SkillsRoute = SkillsRouteImport.update({
+  id: '/skills',
+  path: '/skills',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VideosRoute = VideosRouteImport.update({
+  id: '/videos',
+  path: '/videos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -124,12 +142,15 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
+  '/experience': typeof ExperienceRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/luminalm': typeof LuminalmRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/skills': typeof SkillsRoute
   '/terms': typeof TermsRoute
+  '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -144,12 +165,15 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
+  '/experience': typeof ExperienceRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/luminalm': typeof LuminalmRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/skills': typeof SkillsRoute
   '/terms': typeof TermsRoute
+  '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -165,12 +189,15 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
+  '/experience': typeof ExperienceRoute
   '/faq': typeof FaqRoute
   '/gallery': typeof GalleryRoute
   '/luminalm': typeof LuminalmRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
+  '/skills': typeof SkillsRoute
   '/terms': typeof TermsRoute
+  '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/portfolio/$slug': typeof PortfolioSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
@@ -187,12 +214,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-studies'
     | '/contact'
+    | '/experience'
     | '/faq'
     | '/gallery'
     | '/luminalm'
     | '/pricing'
     | '/privacy'
+    | '/skills'
     | '/terms'
+    | '/videos'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/resources/$slug'
@@ -207,12 +237,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-studies'
     | '/contact'
+    | '/experience'
     | '/faq'
     | '/gallery'
     | '/luminalm'
     | '/pricing'
     | '/privacy'
+    | '/skills'
     | '/terms'
+    | '/videos'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/resources/$slug'
@@ -227,12 +260,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/case-studies'
     | '/contact'
+    | '/experience'
     | '/faq'
     | '/gallery'
     | '/luminalm'
     | '/pricing'
     | '/privacy'
+    | '/skills'
     | '/terms'
+    | '/videos'
     | '/blog/$slug'
     | '/portfolio/$slug'
     | '/resources/$slug'
@@ -248,12 +284,15 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
+  ExperienceRoute: typeof ExperienceRoute
   FaqRoute: typeof FaqRoute
   GalleryRoute: typeof GalleryRoute
   LuminalmRoute: typeof LuminalmRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
+  SkillsRoute: typeof SkillsRoute
   TermsRoute: typeof TermsRoute
+  VideosRoute: typeof VideosRoute
   BlogSlugRoute: typeof BlogSlugRoute
   PortfolioSlugRoute: typeof PortfolioSlugRoute
   ResourcesSlugRoute: typeof ResourcesSlugRoute
@@ -294,6 +333,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/experience': {
+      id: '/experience'
+      path: '/experience'
+      fullPath: '/experience'
+      preLoaderRoute: typeof ExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/faq': {
       id: '/faq'
       path: '/faq'
@@ -329,11 +375,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/skills': {
+      id: '/skills'
+      path: '/skills'
+      fullPath: '/skills'
+      preLoaderRoute: typeof SkillsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/videos': {
+      id: '/videos'
+      path: '/videos'
+      fullPath: '/videos'
+      preLoaderRoute: typeof VideosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -400,12 +460,15 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
+  ExperienceRoute: ExperienceRoute,
   FaqRoute: FaqRoute,
   GalleryRoute: GalleryRoute,
   LuminalmRoute: LuminalmRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
+  SkillsRoute: SkillsRoute,
   TermsRoute: TermsRoute,
+  VideosRoute: VideosRoute,
   BlogSlugRoute: BlogSlugRoute,
   PortfolioSlugRoute: PortfolioSlugRoute,
   ResourcesSlugRoute: ResourcesSlugRoute,

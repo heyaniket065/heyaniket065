@@ -3,6 +3,7 @@ import { photos, site, timeline, values } from "@/data/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, PageHeader, SectionHead } from "@/components/sections/Common";
+import { profile } from "@/data/profile";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -14,7 +15,9 @@ export const Route = createFileRoute("/about")({
           "The story, philosophy and working method behind Aniket Bhalerao and LuminaLM: discipline, storytelling, psychology and strategy.",
       },
       { property: "og:title", content: "About — Aniket Bhalerao" },
-      { property: "og:description", content: "The story, philosophy and working method behind Aniket Bhalerao and LuminaLM." },
+      { property: "og:description", content: "Meet Aniket Bhalerao, a digital creator, AI enthusiast, developer, and strategic storyteller building LuminaLM." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: About,
@@ -24,9 +27,9 @@ function About() {
   return (
     <>
       <PageHeader
-        eyebrow="About"
-        title="A creator who plans before he films."
-        lede={site.intro}
+        eyebrow="About Me"
+        title="Creativity and technology, brought into one practice."
+        lede={profile.about}
       />
 
       <section className="container-editorial">
@@ -34,20 +37,20 @@ function About() {
           <CurtainImage src={photos.campus.src} alt={photos.campus.alt} ratio="4 / 5" imgClassName="grayscale" />
           <div className="pb-2">
             <Reveal>
-              <p className="label-meta">Personal story</p>
+              <p className="label-meta">Who I am</p>
             </Reveal>
             <Reveal delay={80}>
               <p className="mt-5 text-sm leading-relaxed text-ink-soft">
-                Aniket Bhalerao is a student, creator and NCC cadet from India. The uniform taught the part of the work
-                nobody sees: preparation, posture, and finishing what was started. The camera came later, and inherited
-                the same standard.
+                I am Aniket Bhalerao, a digital creator, AI enthusiast, developer, and strategic storyteller. My work
+                moves between technology and creative expression, always looking for a clearer and more useful outcome.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-                LuminaLM grew out of a long interest in why people believe, watch and remember what they do — and an
-                equally long interest in making things that look considered rather than fast.
+                I enjoy building useful tools, experimenting with AI systems, designing digital products, and creating
+                content that combines creativity with technology. Psychology, storytelling, and self-improvement shape
+                how I think about people and the experiences I build for them.
               </p>
               <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-                Biography here is intentionally factual. Anything not verified is left out rather than invented.
+                LuminaLM is the personal brand connecting these interests under one principle: Think Better. Build Better.
               </p>
             </Reveal>
           </div>

@@ -25,16 +25,17 @@ import { CurtainImage } from "@/components/motion/Curtain";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { ProjectHub } from "@/components/sections/ProjectHub";
 import { HomeContact } from "@/components/sections/HomeContact";
+import { ProfileOverview } from "@/components/sections/ProfileOverview";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aniket Bhalerao — Creator & Founder of LuminaLM" },
-      { name: "description", content: "Portfolio of Aniket Bhalerao, BA student, digital creator, website builder, AI enthusiast, storyteller, and founder of LuminaLM and ToolNami." },
+      { title: "Aniket Bhalerao — Digital Creator, AI Enthusiast & Developer" },
+      { name: "description", content: "Portfolio of Aniket Bhalerao, a digital creator, AI enthusiast, developer, strategic storyteller, and creator of LuminaLM." },
       { name: "keywords", content: "Aniket Bhalerao, LuminaLM, Digital Creator, Portfolio, Website Creator, ToolNami, AI Projects, Personal Brand" },
-      { property: "og:title", content: "Aniket Bhalerao — Creator & Founder of LuminaLM" },
-      { property: "og:description", content: "Explore the growing LuminaLM ecosystem of websites, creative projects, tools, and future-focused ideas." },
+      { property: "og:title", content: "Aniket Bhalerao — Digital Creator × LuminaLM" },
+      { property: "og:description", content: "Explore AI experiments, digital products, web projects, stories, and the growing LuminaLM ecosystem." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -98,9 +99,9 @@ function Hero() {
         <div className="relative z-10">
           <Reveal><p className="label-meta flex items-center gap-3"><span className="size-2 rounded-full bg-accent-yellow status-pulse" /> Building the LuminaLM ecosystem</p></Reveal>
           <MaskText text={"ANIKET\nBHALERAO"} as="h1" delay={120} step={90} className="mt-8 font-display text-[clamp(3.75rem,10vw,9.5rem)] leading-[0.82] tracking-normal" />
-          <Reveal delay={360}><p className="mt-8 font-mono text-[10px] uppercase leading-relaxed text-accent-blue sm:text-xs">BA Student <span className="text-ink-soft">|</span> Creator & Founder of LuminaLM</p></Reveal>
+           <Reveal delay={360}><p className="mt-8 max-w-3xl font-mono text-[10px] uppercase leading-relaxed text-accent-blue sm:text-xs">Digital Creator <span className="text-ink-soft">•</span> AI Enthusiast <span className="text-ink-soft">•</span> Developer <span className="text-ink-soft">•</span> Strategic Storyteller</p></Reveal>
           <Reveal delay={440}><p className="mt-6 font-editorial text-[clamp(2rem,4vw,4rem)] leading-none">Think Better. <span className="text-accent-yellow">Build Better.</span></p></Reveal>
-          <Reveal delay={520}><p className="mt-6 max-w-2xl text-sm leading-7 text-ink-soft md:text-base">Building digital experiences, websites, creative projects, tools, and future-focused ideas through LuminaLM.</p></Reveal>
+           <Reveal delay={520}><p className="mt-6 max-w-2xl text-sm leading-7 text-ink-soft md:text-base">Building useful tools, experimenting with AI systems, designing digital products, and creating content that combines creativity with technology.</p></Reveal>
           <Reveal delay={600} className="mt-9 flex flex-wrap gap-3">
             <Magnetic><a href="#ecosystem" className={cn(buttonVariants({ size: "lg" }), "h-12 rounded-none bg-accent-blue px-6 text-primary-foreground hover:bg-accent-blue/90")}>Explore Projects <ArrowDownRight /></a></Magnetic>
             <Magnetic><ProjectHub /></Magnetic>
@@ -217,5 +218,5 @@ function Manifesto() {
 }
 
 function Home() {
-  return <><Hero /><PlatformHub /><FounderStory /><ToolNamiSpotlight /><Ecosystem /><Manifesto /><HomeContact /></>;
+  return <><Hero /><ProfileOverview /><PlatformHub /><FounderStory /><ToolNamiSpotlight /><Ecosystem /><Manifesto /><HomeContact /></>;
 }
