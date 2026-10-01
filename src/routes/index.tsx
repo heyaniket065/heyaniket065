@@ -131,7 +131,7 @@ function PlatformHub() {
                   {index === 0 && <span aria-hidden className="social-orbit absolute -right-10 -top-20 size-56 rounded-full border border-accent-blue/20 sm:size-72" />}
                   <span className="relative z-10 flex items-start justify-between gap-2"><span className="flex items-center gap-2.5"><Icon className="size-5 shrink-0 text-accent-blue transition-transform duration-500 group-hover:scale-110 sm:size-6" /><span className="hidden font-mono text-[9px] uppercase text-ink-soft sm:inline">{platform.category}</span></span><ArrowUpRight className="size-4 shrink-0 text-ink-soft transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent-yellow" /></span>
                   <span className="relative z-10 block min-w-0"><span className="mb-3 block h-px w-8 bg-accent-blue/50 transition-[width] duration-500 group-hover:w-16" /><span className={`block font-semibold leading-none ${index === 0 ? "text-3xl sm:text-5xl" : "text-xl sm:text-3xl"}`}>{platform.name}</span><span className="mt-2 block break-all font-mono text-[9px] uppercase leading-4 text-ink-soft sm:break-normal sm:text-[10px]">{platform.handle}</span></span>
-                  <span className="absolute bottom-4 right-4 font-mono text-[9px] text-ink-soft/50 sm:bottom-6 sm:right-6">{platform.number} / 06</span>
+                  <span className="absolute bottom-4 right-4 hidden font-mono text-[9px] text-ink-soft/50 sm:block sm:bottom-6 sm:right-6">{platform.number} / 06</span>
                 </a>
               </Reveal>
             );
