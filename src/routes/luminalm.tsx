@@ -16,6 +16,8 @@ export const Route = createFileRoute("/luminalm")({
       },
       { property: "og:title", content: "LuminaLM — The Story" },
       { property: "og:description", content: "What LuminaLM represents, why it exists, and the thinking behind the work." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: LuminaLM,

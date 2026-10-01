@@ -14,6 +14,8 @@ export const Route = createFileRoute("/blog/")({
       },
       { property: "og:title", content: "Journal — Writing by Aniket Bhalerao" },
       { property: "og:description", content: "Essays on storytelling, psychology, strategy and craft." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Blog,

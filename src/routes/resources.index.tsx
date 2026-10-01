@@ -14,6 +14,8 @@ export const Route = createFileRoute("/resources/")({
       },
       { property: "og:title", content: "Resources — Frameworks & Guides" },
       { property: "og:description", content: "Frameworks, guides and templates from the LuminaLM practice." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Resources,

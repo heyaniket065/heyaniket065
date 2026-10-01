@@ -44,12 +44,12 @@ export const Route = createFileRoute("/")({
 });
 
 const platforms = [
-  { name: "GitHub", handle: "heyaniket065", href: "https://github.com/heyaniket065?tab=repositories", icon: Github, className: "md:col-span-2 md:row-span-2" },
-  { name: "LinkedIn", handle: "Aniket Bhalerao", href: "https://www.linkedin.com/in/aniket-bhalerao-o07", icon: Linkedin, className: "" },
-  { name: "YouTube", handle: "@luminalm065", href: "https://youtube.com/@luminalm065", icon: Youtube, className: "" },
-  { name: "Instagram", handle: "@hey_aniket_065", href: "https://www.instagram.com/hey_aniket_065", icon: Instagram, className: "md:col-span-2" },
-  { name: "X", handle: "@Instgram136", href: "https://x.com/Instgram136", icon: X, className: "" },
-  { name: "Facebook", handle: "Connect", href: "https://www.facebook.com/share/19cdfcUFpw/", icon: Facebook, className: "" },
+  { name: "GitHub", handle: "heyaniket065", href: "https://github.com/heyaniket065?tab=repositories", icon: Github, className: "col-span-2 lg:col-span-5", number: "01", category: "Code / Experiments" },
+  { name: "YouTube", handle: "@luminalm065", href: "https://youtube.com/@luminalm065", icon: Youtube, className: "lg:col-span-4", number: "02", category: "Film / Ideas" },
+  { name: "LinkedIn", handle: "Aniket Bhalerao", href: "https://www.linkedin.com/in/aniket-bhalerao-o07", icon: Linkedin, className: "lg:col-span-3", number: "03", category: "Work / Network" },
+  { name: "Instagram", handle: "@hey_aniket_065", href: "https://www.instagram.com/hey_aniket_065", icon: Instagram, className: "lg:col-span-5", number: "04", category: "Visual diary" },
+  { name: "X", handle: "@Instgram136", href: "https://x.com/Instgram136", icon: X, className: "lg:col-span-3", number: "05", category: "Thoughts / Notes" },
+  { name: "Facebook", handle: "Connect", href: "https://www.facebook.com/share/19cdfcUFpw/", icon: Facebook, className: "lg:col-span-4", number: "06", category: "Community" },
 ];
 
 const founderTimeline = [
@@ -116,26 +116,29 @@ function Hero() {
 
 function PlatformHub() {
   return (
-    <section className="container-editorial section-pad">
-      <Reveal className="grid gap-6 md:grid-cols-[1fr_.65fr] md:items-end">
-        <div><p className="label-meta text-accent-yellow">Platform hub / Online</p><h2 className="mt-5 max-w-3xl font-display text-[clamp(3rem,7vw,7rem)] leading-[0.86] tracking-normal">ONE CREATOR.<br />MANY SURFACES.</h2></div>
-        <p className="max-w-md text-sm leading-relaxed text-ink-soft md:justify-self-end">Follow the work, code, films, posts, and evolving ideas across Aniket's connected digital presence.</p>
-      </Reveal>
-      <div className="mt-14 grid auto-rows-[11rem] gap-3 md:grid-cols-4">
-        {platforms.map((platform, index) => {
-          const Icon = platform.icon;
-          return (
-            <Reveal key={platform.name} delay={index * 60} className={platform.className}>
-              <Magnetic strength={0.08} className="h-full w-full">
-                <a href={platform.href} target="_blank" rel="noreferrer noopener" className="group relative flex h-full w-full flex-col justify-between overflow-hidden border border-hairline bg-surface p-5 transition-[transform,border-color,box-shadow] duration-500 hover:-translate-y-1 hover:border-accent-blue/70 hover:shadow-[0_18px_60px_color-mix(in_oklab,var(--accent-blue)_14%,transparent)]">
-                  <div className="flex items-center justify-between"><Icon className="size-6 transition-all duration-500 group-hover:scale-110 group-hover:text-accent-yellow" /><ArrowUpRight className="size-4 text-ink-soft transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" /></div>
-                  <div><p className={index === 0 ? "text-4xl font-semibold" : "text-xl font-semibold"}>{platform.name}</p><p className="mt-2 font-mono text-[9px] uppercase text-ink-soft">{platform.handle}</p></div>
+    <section className="border-y border-hairline" aria-labelledby="platform-heading">
+      <div className="container-editorial section-pad">
+        <Reveal className="grid gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div><p className="label-meta text-accent-yellow"><span className="mr-2 inline-block size-1.5 rounded-full bg-accent-yellow status-pulse align-middle" />Platform hub / Online</p><h2 id="platform-heading" className="mt-5 max-w-3xl font-display text-[clamp(2.7rem,7vw,7rem)] leading-[0.9] tracking-normal">ONE CREATOR.<br />MANY SURFACES.</h2></div>
+          <div className="max-w-sm lg:pb-1"><p className="text-sm leading-relaxed text-ink-soft">Follow the work, code, films, posts, and evolving ideas across Aniket's connected digital presence.</p><p className="mt-5 font-mono text-[10px] uppercase text-accent-blue">06 channels / One connected practice</p></div>
+        </Reveal>
+        <div className="mt-10 grid grid-cols-2 gap-2.5 lg:mt-14 lg:grid-cols-12 lg:gap-3">
+          {platforms.map((platform, index) => {
+            const Icon = platform.icon;
+            return (
+              <Reveal key={platform.name} delay={index * 55} className={`min-w-0 ${platform.className}`}>
+                <a href={platform.href} target="_blank" rel="noreferrer noopener" aria-label={`${platform.name} — ${platform.handle} (opens in a new tab)`} className={`social-tile group relative flex h-full min-h-[170px] flex-col justify-between overflow-hidden border border-hairline bg-surface p-4 transition-[border-color,background-color,transform] duration-500 hover:-translate-y-1 hover:border-accent-blue focus-visible:outline-2 focus-visible:outline-accent-blue sm:p-6 lg:min-h-[240px] ${index === 0 ? "min-h-[205px] lg:min-h-[240px]" : ""}`}>
+                  {index === 0 && <span aria-hidden className="social-orbit absolute -right-10 -top-20 size-56 rounded-full border border-accent-blue/20 sm:size-72" />}
+                  <span className="relative z-10 flex items-start justify-between gap-2"><span className="flex items-center gap-2.5"><Icon className="size-5 shrink-0 text-accent-blue transition-transform duration-500 group-hover:scale-110 sm:size-6" /><span className="hidden font-mono text-[9px] uppercase text-ink-soft sm:inline">{platform.category}</span></span><ArrowUpRight className="size-4 shrink-0 text-ink-soft transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-accent-yellow" /></span>
+                  <span className="relative z-10 block min-w-0"><span className="mb-3 block h-px w-8 bg-accent-blue/50 transition-[width] duration-500 group-hover:w-16" /><span className={`block font-semibold leading-none ${index === 0 ? "text-3xl sm:text-5xl" : "text-xl sm:text-3xl"}`}>{platform.name}</span><span className="mt-2 block break-all font-mono text-[9px] uppercase leading-4 text-ink-soft sm:break-normal sm:text-[10px]">{platform.handle}</span></span>
+                  <span className="absolute bottom-4 right-4 hidden font-mono text-[9px] text-ink-soft/50 sm:block sm:bottom-6 sm:right-6">{platform.number} / 06</span>
                 </a>
-              </Magnetic>
-            </Reveal>
-          );
-        })}
+              </Reveal>
+            );
+          })}
+        </div>
       </div>
+      <div className="overflow-hidden border-t border-hairline bg-surface py-3" aria-hidden="true"><div className="social-ticker flex w-max whitespace-nowrap font-mono text-[10px] uppercase text-ink-soft">{Array.from({ length: 4 }, (_, index) => <span key={index} className="flex shrink-0 items-center gap-8 pr-8"><span>Think better</span><span className="text-accent-yellow">✳</span><span>Build better</span><span className="text-accent-blue">✳</span><span>Learn · Create · Improve</span><span className="text-accent-yellow">✳</span></span>)}</div></div>
     </section>
   );
 }

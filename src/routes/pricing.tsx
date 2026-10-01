@@ -12,6 +12,8 @@ export const Route = createFileRoute("/pricing")({
       },
       { property: "og:title", content: "Pricing — Working Together" },
       { property: "og:description", content: "How engagements are scoped and priced, explained plainly." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Pricing,

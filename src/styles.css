@@ -291,6 +291,39 @@
   to { transform: translate3d(-50%, 0, 0); }
 }
 
+@keyframes social-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes social-sweep {
+  to { transform: translateX(360%); }
+}
+
+.social-orbit {
+  animation: social-orbit 28s linear infinite;
+  border-style: dashed;
+}
+
+.social-ticker {
+  animation: marquee-x 32s linear infinite;
+}
+
+.social-tile::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset-block: 0;
+  left: -55%;
+  width: 30%;
+  transform: skewX(-18deg);
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--accent-blue) 5%, transparent), transparent);
+  animation: social-sweep 12s linear infinite;
+}
+
+.social-tile:nth-child(2n)::after {
+  animation-delay: -6s;
+}
+
 @keyframes status-pulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: .45; transform: scale(.72); }
@@ -437,6 +470,9 @@
     animation: none;
   }
   .marquee-track,
+  .social-orbit,
+  .social-ticker,
+  .social-tile::after,
   .status-pulse,
   .portrait-float,
   .particle-drift {

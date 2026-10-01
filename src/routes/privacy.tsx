@@ -9,6 +9,8 @@ export const Route = createFileRoute("/privacy")({
       { name: "description", content: "How information submitted through this site is handled." },
       { property: "og:title", content: "Privacy — Aniket Bhalerao" },
       { property: "og:description", content: "How information submitted through this site is handled." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Privacy,
