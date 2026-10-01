@@ -9,6 +9,8 @@ export const Route = createFileRoute("/terms")({
       { name: "description", content: "Terms of use for this site and the work presented on it." },
       { property: "og:title", content: "Terms — Aniket Bhalerao" },
       { property: "og:description", content: "Terms of use for this site and the work presented on it." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Terms,

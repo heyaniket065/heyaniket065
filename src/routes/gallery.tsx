@@ -13,6 +13,8 @@ export const Route = createFileRoute("/gallery")({
       { name: "description", content: "A small visual record: discipline, place and identity behind the LuminaLM work." },
       { property: "og:title", content: "Gallery — Aniket Bhalerao" },
       { property: "og:description", content: "A small visual record behind the LuminaLM work." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Gallery,

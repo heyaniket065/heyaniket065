@@ -12,6 +12,8 @@ export const Route = createFileRoute("/faq")({
       { name: "description", content: "Questions about LuminaLM, services, process, pricing and collaboration — answered plainly." },
       { property: "og:title", content: "FAQ — Working with Aniket Bhalerao" },
       { property: "og:description", content: "Questions about LuminaLM, services, process and collaboration." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Faq,

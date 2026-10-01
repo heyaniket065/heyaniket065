@@ -12,6 +12,8 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Start a conversation about strategy, storytelling, creative direction or collaboration with Aniket Bhalerao." },
       { property: "og:title", content: "Contact — Start a Conversation" },
       { property: "og:description", content: "Start a conversation about strategy, storytelling or collaboration." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contact,
