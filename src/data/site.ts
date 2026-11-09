@@ -2,6 +2,11 @@ import nccAsset from "@/assets/ncc-portrait.jpeg.asset.json";
 import waterfallAsset from "@/assets/waterfall.jpeg.asset.json";
 import campusAsset from "@/assets/jersey-campus.png.asset.json";
 import bikeAsset from "@/assets/jersey-bike.png.asset.json";
+import festivalPortraitAsset from "@/assets/aniket-portrait-festival.png.asset.json";
+import cafePortraitAsset from "@/assets/aniket-cafe-portrait.png.asset.json";
+import blackOutfitPortraitAsset from "@/assets/aniket-black-outfit-portrait.png.asset.json";
+import editorialPortraitAsset from "@/assets/aniket-editorial-portrait.png.asset.json";
+import waterOutingAsset from "@/assets/aniket-water-outing.jpg.asset.json";
 
 export const site = {
   name: "Aniket Bhalerao",
@@ -34,6 +39,39 @@ export const photos = {
     role: "Energy, movement, personality",
   },
 } as const;
+
+export const creatorPhotos = [
+  {
+    src: festivalPortraitAsset.url,
+    alt: "Aniket Bhalerao in a green shirt at home",
+    caption: "A personal moment",
+    ratio: "3 / 4",
+  },
+  {
+    src: cafePortraitAsset.url,
+    alt: "Aniket Bhalerao outdoors in a green polo and white trousers",
+    caption: "Everyday / Outside",
+    ratio: "3 / 4",
+  },
+  {
+    src: blackOutfitPortraitAsset.url,
+    alt: "Aniket Bhalerao in a black outfit at an evening venue",
+    caption: "Creator portrait",
+    ratio: "4 / 5",
+  },
+  {
+    src: editorialPortraitAsset.url,
+    alt: "Aniket Bhalerao in a black outfit beside a modern building",
+    caption: "Discipline / Focus",
+    ratio: "4 / 5",
+  },
+  {
+    src: waterOutingAsset.url,
+    alt: "Aniket Bhalerao enjoying a day outdoors by the water",
+    caption: "Out of office",
+    ratio: "1 / 1",
+  },
+] as const;
 
 export const primaryNav = [
   { label: "Home", to: "/" },
