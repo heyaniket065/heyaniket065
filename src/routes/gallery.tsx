@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { photos } from "@/data/site";
+import { creatorPhotos, photos } from "@/data/site";
 import { Reveal } from "@/components/motion/Reveal";
 import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, PageHeader } from "@/components/sections/Common";
@@ -21,6 +21,7 @@ export const Route = createFileRoute("/gallery")({
 });
 
 const items = [
+  ...creatorPhotos,
   { ...photos.ncc, caption: "Discipline", ratio: "3 / 4" },
   { ...photos.waterfall, caption: "Distance", ratio: "4 / 5" },
   { ...photos.campus, caption: "Everyday", ratio: "4 / 5" },
@@ -29,6 +30,7 @@ const items = [
 
 function Gallery() {
   const [open, setOpen] = useState<number | null>(null);
+  const activeItem = open === null ? undefined : items[open];
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null);
@@ -59,7 +61,7 @@ function Gallery() {
               <Reveal delay={80}>
                 <div className="hairline-t mt-4 flex items-center justify-between pt-3">
                   <span className="label-meta">{it.caption}</span>
-                  <span className="label-meta">{String(i + 1).padStart(2, "0")} / 04</span>
+                  <span className="label-meta">{String(i + 1).padStart(2, "0")} / {String(items.length).padStart(2, "0")}</span>
                 </div>
               </Reveal>
             </div>
@@ -67,7 +69,7 @@ function Gallery() {
         </div>
       </section>
 
-      {open !== null ? (
+      {activeItem ? (
         <div
           className="fixed inset-0 z-[90] flex items-center justify-center bg-background/95 p-6 backdrop-blur-sm"
           onClick={() => setOpen(null)}
@@ -82,8 +84,8 @@ function Gallery() {
             <X className="size-4" />
           </button>
           <img
-            src={items[open]!.src}
-            alt={items[open]!.alt}
+            src={activeItem.src}
+            alt={activeItem.alt}
             className="max-h-[82vh] w-auto object-contain"
             onClick={(e) => e.stopPropagation()}
           />

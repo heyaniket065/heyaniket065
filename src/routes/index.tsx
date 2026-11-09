@@ -16,7 +16,7 @@ import {
   Youtube,
 } from "lucide-react";
 import { useRef, type PointerEvent } from "react";
-import portraitAsset from "@/assets/aniket-bhalerao-portrait.png.asset.json";
+import portraitAsset from "@/assets/aniket-black-outfit-portrait.png.asset.json";
 import { ecosystemProjects } from "@/data/ecosystem";
 import { Reveal } from "@/components/motion/Reveal";
 import { Magnetic } from "@/components/motion/Magnetic";
