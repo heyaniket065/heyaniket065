@@ -4,6 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/blog/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const article = getArticle(params.slug);
     if (!article) throw notFound();

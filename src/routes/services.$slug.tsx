@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ButtonLink, CtaBand, ProjectCard, SectionHead } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/services/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const service = getService(params.slug);
     if (!service) throw notFound();

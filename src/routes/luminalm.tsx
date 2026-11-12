@@ -6,6 +6,7 @@ import { ButtonLink, CtaBand, PageHeader, SectionHead } from "@/components/secti
 import { NarrativeEngine } from "@/components/sections/NarrativeEngine";
 
 export const Route = createFileRoute("/luminalm")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "LuminaLM — The Story" },

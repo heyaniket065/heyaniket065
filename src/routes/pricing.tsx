@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ButtonLink, CtaBand, PageHeader, SectionHead } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/pricing")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Pricing — Working Together" },

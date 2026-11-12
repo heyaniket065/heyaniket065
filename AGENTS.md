@@ -11,3 +11,4 @@
 
 - Keep the homepage social hub in a compact two-column mobile / twelve-column desktop grid with semantic links, because the prior tall one-column cards obscured the rest of the portfolio.
 - Keep continuous visual motion CSS-based with reduced-motion opt-out, because decorative movement must not disrupt scrolling or touch use.
+- Sitemap pages are chosen per page via staticData.sitemap; /sitemap.xml adds detail pages from the local data lists. Why: new pages must make an explicit search-listing decision.

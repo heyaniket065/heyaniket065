@@ -5,6 +5,7 @@ import { CtaBand, PageHeader } from "@/components/sections/Common";
 import { experience } from "@/data/profile";
 
 export const Route = createFileRoute("/experience")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Experience — Aniket Bhalerao" },

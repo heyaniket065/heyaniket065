@@ -4,6 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { CtaBand, PageHeader } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/services/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Services — Aniket Bhalerao" },

@@ -3,6 +3,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { PageHeader } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/privacy")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Privacy — Aniket Bhalerao" },

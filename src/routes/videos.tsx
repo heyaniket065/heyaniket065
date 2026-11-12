@@ -7,6 +7,7 @@ import { featuredVideos } from "@/data/profile";
 import { youtube } from "@/data/site";
 
 export const Route = createFileRoute("/videos")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Videos — Aniket Bhalerao × LuminaLM" },

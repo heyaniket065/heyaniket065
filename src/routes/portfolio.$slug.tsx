@@ -5,6 +5,7 @@ import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, ProjectCard, SectionHead } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/portfolio/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const project = getProject(params.slug);
     if (!project) throw notFound();

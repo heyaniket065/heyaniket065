@@ -5,6 +5,7 @@ import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, PageHeader } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/case-studies")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Case Studies — How the Work Was Built" },

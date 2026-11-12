@@ -6,6 +6,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { PageHeader } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/contact")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Contact — Start a Conversation" },

@@ -4,6 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ButtonLink, CtaBand } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/resources/$slug")({
+  staticData: { sitemap: true },
   loader: ({ params }) => {
     const resource = getResource(params.slug);
     if (!resource) throw notFound();

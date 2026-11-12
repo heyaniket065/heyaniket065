@@ -7,6 +7,7 @@ import { CurtainImage } from "@/components/motion/Curtain";
 import { CtaBand, PageHeader } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/gallery")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Gallery — Aniket Bhalerao" },

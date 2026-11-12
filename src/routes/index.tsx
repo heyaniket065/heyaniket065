@@ -29,6 +29,7 @@ import { ProfileOverview } from "@/components/sections/ProfileOverview";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Aniket Bhalerao — Digital Creator, AI Enthusiast & Developer" },

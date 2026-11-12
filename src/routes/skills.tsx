@@ -5,6 +5,7 @@ import { CtaBand, PageHeader } from "@/components/sections/Common";
 import { skillGroups } from "@/data/profile";
 
 export const Route = createFileRoute("/skills")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Skills — Aniket Bhalerao" },

@@ -6,6 +6,7 @@ import { CtaBand, PageHeader, SectionHead } from "@/components/sections/Common";
 import { profile } from "@/data/profile";
 
 export const Route = createFileRoute("/about")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "About — Aniket Bhalerao" },

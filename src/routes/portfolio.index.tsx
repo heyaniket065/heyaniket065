@@ -4,6 +4,7 @@ import { categories, projects } from "@/data/work";
 import { CtaBand, PageHeader, ProjectCard } from "@/components/sections/Common";
 
 export const Route = createFileRoute("/portfolio/")({
+  staticData: { sitemap: true },
   head: () => ({
     meta: [
       { title: "Portfolio — Selected Work by Aniket Bhalerao" },
