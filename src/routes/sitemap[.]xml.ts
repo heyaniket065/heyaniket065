@@ -22,7 +22,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           ["/resources/$slug", resources.map((r) => r.slug)],
         ];
         for (const [routeId, slugs] of dynamic) {
-          if (!router.routesById[routeId]) continue;
+          if (!(router.routesById as Record<string, unknown>)[routeId]) continue;
           for (const slug of slugs) {
             const location = router.buildLocation({ to: routeId, params: { slug }, search: () => ({}), hash: "" } as never);
             const path = sitemapPathForLocation(router, location, routeId);
